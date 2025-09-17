@@ -38,7 +38,7 @@
       
       <!-- Logo + Social -->
       <div class="wow animate__animated animate__fadeInUp" data-wow-delay="0.2s">
-        <img class="img-fluid footerLogo" src="{{ $setting->logo }}" alt="">
+        <img class="img-fluid footerLogo" src="{{ asset($setting->logo) }}" alt="">
         <div class="social-links mt-4">
           <ul class="text-start">
             @if(!empty($setting->fb_link))<li><a href="{{ $setting->fb_link }}"><i class="fab fa-facebook-f"></i></a></li>@endif

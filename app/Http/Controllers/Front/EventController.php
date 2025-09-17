@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
-use App\Models\EventGallary;
+use App\Models\Service;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -13,11 +13,15 @@ class EventController extends Controller
 {
     public function event(){
         try {
-            $galleries = EventGallary::where('status' ,1)->get();
-            return view('front.events', compact('galleries'));
+            // $events = Service::where('status' ,1)->groupBy('name')->get();
+            $events = Service::where('status', 1)
+                ->select('name')
+                ->groupBy('name')
+                ->get();
+            return view('front.events', compact('events'));
         } catch (Exception $e) {
-            Log::error('Failed to load gallery: ' . $e->getMessage());
-            return redirect()->back()->with('error', 'Something went wrong while loading the gallery.');
+            Log::error('Failed to load events: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Something went wrong while loading the events.');
         }
     }
 
@@ -28,20 +32,21 @@ class EventController extends Controller
             $page = $request->input('page', 1);
             $perPage = 5;
 
-            $galleries = EventGallary::all();
+            $galleries = Service::all();
             $allImages = collect();
             // $shortDesc = null;
 
             foreach ($galleries as $gallery) {
-                $images = explode(',', $gallery->images);
-                foreach ($images as $image) {
+                // dd($gallery);
+                $images = $gallery->image;
+                // foreach ($images as $image) {
                     $allImages->push([
-                        'image' => $image,
-                        'category' => $gallery->category,
+                        'image' => $gallery->image,
+                        'category' => $gallery->name,
                     ]);
-                }
+                // }
             }
-
+            // dd($allImages);
             if ($category !== 'all') {
                 // Filter images by category
                 $allImages = $allImages->where('title', $category)->values();

@@ -3,7 +3,7 @@
     <!-- Content -->
 
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4 d-inline-block"><span class="text-muted fw-light">Master /</span> Service List</h4>
+        <h4 class="fw-bold py-3 mb-4 d-inline-block"><span class="text-muted fw-light">Master /</span> Events List</h4>
         <a class="btn btn-primary float-end" href="{{ route('admin.service.add') }}"><i class="bx bx-box-alt me-1"></i> Add New
             data</a>
 
@@ -25,7 +25,7 @@
 
         <!-- Basic Bootstrap Table -->
         <div class="card">
-            <h5 class="card-header">Service List</h5>
+            <h5 class="card-header">Events List</h5>
 
             <div class="table-responsive text-nowrap">
                 <table class="table">

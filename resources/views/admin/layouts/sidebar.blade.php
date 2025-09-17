@@ -62,7 +62,7 @@
                   </g>
                 </svg>
               </span> -->
-              <img src="{{ asset('admin\assets\img\logo.jpg') }}" width="40px" height="auto">
+              <img src="{{ asset($setting->favicon) }}" width="40px" height="auto">
               <span class="app-brand-text demo menu-text fw-bolder ms-2">{{ env('APP_NAME') }}</span>
             </a>
 
@@ -107,26 +107,31 @@
             </li>
 
             <li
-                class="menu-item {{ $currentRoute  == 'admin.about.list' || $currentRoute == 'admin.about.add' ? 'active' : '' }}">
-                <a href="{{ route('admin.about.list') }}" class="menu-link">
+                class="menu-item {{ in_array($currentRoute, ['admin.about.list', 'admin.feature.list', 'admin.about.add', 'admin.feature.add']) ? 'active open' : '' }}">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx-news"></i>
-                    <div data-i18n="About">About</div>
+                    <div data-i18n="Layouts">Abouts</div>
                 </a>
+                <ul class="menu-sub">
+                    <li class="menu-item {{ $currentRoute  == 'admin.about.list' || $currentRoute == 'admin.about.add' ? 'active' : '' }}">
+                        <a href="{{ route('admin.about.list') }}" class="menu-link">
+                            <div data-i18n="About">About</div>
+                        </a>
+                    </li>
+                    <li class="menu-item {{ $currentRoute  == 'admin.feature.list' || $currentRoute == 'admin.feature.add' ? 'active' : '' }}">
+                        <a href="{{ route('admin.feature.list') }}" class="menu-link">
+                            <div data-i18n="About Feature">About Feature</div>
+                        </a>
+                    </li>
+                </ul>
             </li>
 
-            <li
-                class="menu-item {{ $currentRoute  == 'admin.feature.list' || $currentRoute == 'admin.feature.add' ? 'active' : '' }}">
-                <a href="{{ route('admin.feature.list') }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-news"></i>
-                    <div data-i18n="About Feature">About Feature</div>
-                </a>
-            </li>
-
+           
             <li
                 class="menu-item {{ $currentRoute  == 'admin.event.list' || $currentRoute == 'admin.event.add' ? 'active' : '' }}">
                 <a href="{{ route('admin.event.list') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-news"></i>
-                    <div data-i18n="Event">Event</div>
+                    <div data-i18n="What we offer">What we offer</div>
                 </a>
             </li>
 
@@ -134,17 +139,17 @@
                 class="menu-item {{ $currentRoute  == 'admin.service.list' || $currentRoute == 'admin.service.add' ? 'active' : '' }}">
                 <a href="{{ route('admin.service.list') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-news"></i>
-                    <div data-i18n="Futurebox events">Futurebox events</div>
+                    <div data-i18n="Events">Events</div>
                 </a>
             </li>
 
-            <li
+            <!-- <li
                 class="menu-item {{ $currentRoute  == 'admin.eventgallary.list' || $currentRoute == 'admin.eventgallary.add' ? 'active' : '' }}">
                 <a href="{{ route('admin.eventgallary.list') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-news"></i>
                     <div data-i18n="Event Gallery">Event Gallery</div>
                 </a>
-            </li>
+            </li> -->
 
             <li
                 class="menu-item {{ $currentRoute  == 'admin.team.list' || $currentRoute == 'admin.team.add' ? 'active' : '' }}">

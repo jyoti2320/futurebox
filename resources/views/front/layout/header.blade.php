@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Futurebox |Introducing the World’s First VR Interactive Board Game Pinball Machine. </title>
 	<!-- favicon -->
-	<link rel="shortcut icon" href="{{ $setting->favicon }}" type="image/x-icon">
+	<link rel="shortcut icon" href="{{ asset($setting->favicon) }}" type="image/x-icon">
 	  <!-- Fancybox CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.css" />
 

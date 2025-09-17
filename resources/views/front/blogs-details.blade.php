@@ -10,8 +10,9 @@
 					<h2>Blogs </h2>
 					<ul class="breadcrumb-list">
 						<li><a href="#">Home</a></li>
-						<li><a href="#">Blogs</a></li>
-						<li><a href="#">Blogs 1</a></li>
+						<li><a href="#">{{$blogsDetails->category->name}}</a></li>
+						<li><a href="#">{!! $blogsDetails->title !!}</a></li>
+
 					</ul>
 				</div>
 			</div>
@@ -28,8 +29,15 @@
 	
 			<!-- Blog Content -->
 			<div class="col-md-8 blog-content">
-				<img src="{{ url('front/assets/images/new/vrGamming.jpg') }}" alt="Blog Image">
-				<p class="lead">This is an example lead paragraph for the blog details page. It should be engaging and give
+				<img src="../{{ $blogsDetails->image }}" alt="Blog Image">
+				<p>
+					<!-- {!! $blogsDetails->title !!} -->
+				<span class="float-right">{{ date('F j, Y', strtotime($blogsDetails->publish_date)) }}</span>
+				</p>
+				<p>
+					{!! $blogsDetails->content !!}
+				</p>
+				<!-- <p class="lead">This is an example lead paragraph for the blog details page. It should be engaging and give
 					readers a quick summary of the post.</p>
 	
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ut dui quis libero tempor varius.
@@ -46,20 +54,20 @@
 				</blockquote>
 	
 				<p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed fermentum
-					nisl at dui scelerisque bibendum.</p>
+					nisl at dui scelerisque bibendum.</p> -->
 	
 				<!-- Author Box -->
-				<div class="author-box">
+				<!-- <div class="author-box">
 					<img src="{{ url('front/assets/images/new/f4.png') }}" alt="Author">
 					<div>
 						<h5>Ankur </h5>
 						<p>Ankur is a content writer who loves to share insights on technology, design, and business growth.
 						</p>
 					</div>
-				</div>
+				</div> -->
 	
 				<!-- Comments -->
-				<div class="comment-box">
+				<!-- <div class="comment-box">
 					<h4>Comments (2)</h4>
 					<div class="media mb-4">
 						<img src="https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png" class="mr-3 rounded-circle" alt="User">
@@ -75,32 +83,33 @@
 							<p>I learned a lot from this post. Thanks for sharing!</p>
 						</div>
 					</div>
-				</div>
-				
+				</div> -->
 			</div>
 	
 			<!-- Sidebar -->
 			<div class="col-md-4 sidebar">
-				<div class="card">
+				<!-- <div class="card">
 					<div class="card-body">
 						<h4 class="card-title">Search</h4>
 						<input type="text" class="form-control" placeholder="Search blog...">
 					</div>
-				</div>
+				</div> -->
 	
 				<div class="card">
 					<div class="card-body">
 						<h4 class="card-title">Categories</h4>
 						<ul class="list-unstyled mb-0">
-							<li><a href="#">Web Design</a></li>
-							<li><a href="#">Development</a></li>
+							@foreach($blogCategory as $blogCategories1)
+							<li><a href="#">{{$blogCategories1->name}}</a></li>
+							@endforeach
+							<!-- <li><a href="#">Development</a></li>
 							<li><a href="#">Technology</a></li>
-							<li><a href="#">Tips & Tricks</a></li>
+							<li><a href="#">Tips & Tricks</a></li> -->
 						</ul>
 					</div>
 				</div>
 	
-				<div class="card">
+				<!-- <div class="card">
 					<div class="card-body">
 						<h4 class="card-title">Recent Posts</h4>
 						<ul class="list-unstyled mb-0">
@@ -109,7 +118,7 @@
 							<li><a href="#">The Future of Development</a></li>
 						</ul>
 					</div>
-				</div>
+				</div> -->
 	
 			</div>
 	

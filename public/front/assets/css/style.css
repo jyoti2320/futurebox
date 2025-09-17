@@ -383,16 +383,16 @@ select:focus {
 
 /* Breadcrumb Area Start */
 .breadcrumb-area {
-  padding: 290px 0px 142px;
+  padding: 90px 0px 90px;
 }
 .breadcrumb-area.about {
-  background: url(../images/bc/about-bc.jpg);
+  background: url(../images/newsletter.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 .breadcrumb-area.turnaments {
-  background: url(../images/bc/turnament.png);
+  background: url(../images/newsletter.png);
   background-repeat: no-repeat;
   background-position: bottom center;
   background-size: cover;
@@ -400,7 +400,7 @@ select:focus {
   padding: 0px;
 }
 .breadcrumb-area.turnaments2 {
-  background: url(../images/bc/tournament2.jpg);
+  background: url(../images/newsletter.png);
   background-repeat: no-repeat;
   background-position: bottom center;
   background-size: cover;
@@ -1022,7 +1022,7 @@ select:focus {
 }
 
 .subscribe-box {
-  background: url(../images/newsletter.jpg);
+  background: url(../images/newsletter.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

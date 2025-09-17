@@ -293,7 +293,7 @@ header.fixed {
   position: relative;
   .overlay {
     opacity: 1;
-    background: #190537;
+    background: #400861;
   }
   .mainmenu-area {
     padding-block: 6px;
@@ -317,11 +317,11 @@ header.fixed {
 }
 
 .header .mainmenu-area .navbar .navbar-brand img {
-    height: 76px;
+  height: 70px;
 }
 .flogo a img {
     height: 90px;
-}
+} 
 .menuRight {
   display: flex;
   justify-content: center;
@@ -796,6 +796,9 @@ path:nth-child(6) {
       font-weight: 600;
     }
     p{font-size: 1.4rem;}
+    .teamDesc{
+    min-height: 110px;
+  }
 }
 
 /* .single-team::before {

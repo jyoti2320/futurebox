@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\BlogCategoryController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\AboutController;
@@ -103,7 +103,7 @@ Route::get('/contact', [FrontContactController::class, 'contact'])->name('contac
 Route::post('/contact-form', [FrontContactController::class, 'contactForm'])->name('contact-form');
 
 Route::get('/blog', [FrontBlogController::class, 'blog'])->name('blog');
-Route::get('/blog-detail/{id?}', [FrontBlogController::class, 'blogDetails'])->name('blog-detail');
+Route::get('/blog-details/{slug}', [FrontBlogController::class, 'blogDetails'])->name('blog-detail');
 
 
 
@@ -113,6 +113,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('logincheck', [AdminController::class, 'loginCheck']);
 
     Route::middleware(AdminCheckMiddleware::class)->group(function () {
+        //Dashboard
+        Route::get('dashboard/', [DashboardController::class, 'dashboard'])->name('dashboard');
 
         //Blog
         Route::get('blog-add/{id?}', [BlogController::class, 'addBlog'])->name('blog.add');

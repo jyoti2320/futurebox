@@ -1,12 +1,6 @@
 @extends('front.layout.main')
 @section('main-section')
 <!-- Breadcrumb Area Start -->
- @if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
-
 <section class="breadcrumb-area about">
 	<div class="container">
 		<div class="row">
@@ -29,6 +23,7 @@
         <div class="row justify-content-between align-items-center">
             <div class="col-md-6 mb-4 wow animate__fadeInUp" data-wow-delay="0.2s">
                 <div class="contactFormBox">
+                    @include('front.layout.notifications')
                     <h2 class="fs-2 fw-bold mb-4 text-light text-uppercase wow animate__fadeInDown">Get in touch today!</h2>
                     <p class="mb-4 wow animate__fadeInUp">Fill out the form below to connect with our team. We’re committed to providing you with the support and guidance you need.</p>
                     <form action="{{ route('contact-form') }}" method="post">

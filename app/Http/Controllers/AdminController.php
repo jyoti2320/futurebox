@@ -23,7 +23,7 @@ class AdminController extends Controller
         try {
             if (Auth::guard('admin')->attempt($validated)) {
                 Log::info('Admin login successful', ['email' => $request->email]);
-                return redirect()->route('admin.blog.list')->with('success', 'Login successful!');
+                return redirect()->route('admin.dashboard')->with('success', 'Login successful!');
             }
 
             Log::warning('Admin login failed', ['email' => $request->email]);

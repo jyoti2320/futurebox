@@ -8,6 +8,8 @@ use App\Models\Setting;
 use App\Models\Contact;
 use Exception;
 use Illuminate\Support\Facades\Log;
+use App\Mail\ContactMail;
+use Illuminate\Support\Facades\Mail;
 
 
 class ContactController extends Controller
@@ -38,13 +40,13 @@ class ContactController extends Controller
         // dd($data);
         try {
             $created = Contact::create($data);
+            Mail::to('jahirwar1920@gmail.com')->send(new ContactMail($data));
             Log::info("Your data add successfully. ID: {$created->id}", $data);
-            return redirect()->route('front.contact')->with('success', 'Your data add successfully');
+            return redirect()->route('contact')->with('success', 'Data saved and email sent to admin');
             
         } catch (Exception $e) {
             Log::error("Contact data store error", [
                 'error' => $e->getMessage(),
-                'id' => $id
             ]);
             return redirect()->back()->with('error', 'Something went wrong. Please try again..');
         }

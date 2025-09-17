@@ -25,8 +25,10 @@
 			<!-- Filter buttons -->
 			<div class="filter-buttons">
 				<button class="active" data-filter="all">All</button>
-				<button data-filter="activities">Activities</button>
-				<button data-filter="fuuturebox-V1">Futurebox V1</button>
+                @foreach($events as $event)
+				    <button data-filter="{{$event->name}}">{{$event->name}}</button>
+                @endforeach
+				<!-- <button data-filter="fuuturebox-V1">Futurebox V1</button> -->
 			</div>
 			<div class="gallery"></div>
 

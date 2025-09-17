@@ -19,7 +19,7 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ url("admin\assets\img\logo.jpg") }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset($setting->favicon) }}" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com')}}" />
