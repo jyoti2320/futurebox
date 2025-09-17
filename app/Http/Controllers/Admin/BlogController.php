@@ -56,18 +56,20 @@ class BlogController extends Controller
         try {
             if ($request->hasFile('image')) {
                 $file = $request->file('image');
-
                 if ($id) {
-                    $blog = Blog::find($id);
-                    if ($blog && !empty($blog->image) && file_exists(public_path($blog->image))) {
-                        unlink(public_path($blog->image));
+                    $event = Blog::find($id);
+                    if ($event && !empty($event->image) && file_exists(public_path($event->image))) {
+                        unlink(public_path($event->image));
                     }
                 }
 
-                // Store the image using Laravel's filesystem
-                $path = $file->store('blogs', 'public'); // stored in storage/app/public/uploads/blogs
-                $data['image'] = 'storage/' . $path; // path for public access
+                $file = $request->file('image');
+                $filename = time() . rand(1000, 9999) . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('blogs'), $filename);
+
+                $data['image'] = 'blogs/' . $filename; // path for public access
             }
+
 
             if ($id) {
                 $blog = Blog::find($id);

@@ -44,7 +44,7 @@
 					<div class="col-lg-12">                 
 						<nav class="navbar navbar-expand-lg navbar-light">
 							<a class="navbar-brand" href="index.html">
-								<img src="{{ url('front/assets/images/new/logo/logoWhite.svg')}}" alt="">
+								<img src="{{ $setting->logo }}" alt="">
 							</a>
 							<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_menu" aria-controls="main_menu"
 								aria-expanded="false" aria-label="Toggle navigation">

@@ -14,6 +14,8 @@ use App\Http\Controllers\Admin\EventgallaryController;
 
 use App\Http\Controllers\Front\FrontController;
 use App\Http\Controllers\Front\EventController as FrontEventController;
+use App\Http\Controllers\Front\ContactController as FrontContactController;
+use App\Http\Controllers\Front\BlogController as FrontBlogController;
 
 use App\Http\Controllers\AdminController;
 use App\Http\Middleware\AdminCheckMiddleware;
@@ -97,9 +99,11 @@ Route::get('/about', [FrontController::class, 'about'])->name('about');
 Route::get('/event', [FrontEventController::class, 'event'])->name('event');
 Route::get('/event/load-images', [FrontEventController::class, 'loadImages'])->name('event.load');
 
-Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
-Route::get('/blog', [FrontController::class, 'blog'])->name('blog');
-Route::get('/blog-detail', [FrontController::class, 'blogDetails'])->name('blog-detail');
+Route::get('/contact', [FrontContactController::class, 'contact'])->name('contact');
+Route::post('/contact-form', [FrontContactController::class, 'contactForm'])->name('contact-form');
+
+Route::get('/blog', [FrontBlogController::class, 'blog'])->name('blog');
+Route::get('/blog-detail/{id?}', [FrontBlogController::class, 'blogDetails'])->name('blog-detail');
 
 
 
@@ -162,11 +166,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('setting/{id?}', [SettingController::class, 'addSetting'])->name('setting');
         Route::post('setting-store/{id?}', [SettingController::class, 'storeSetting'])->name('setting.store');
 
+        //Event feature
         Route::get('feature-add/{id?}', [FeatureController::class, 'addFeature'])->name('feature.add');
         Route::get('feature-list', [FeatureController::class, 'featureList'])->name('feature.list');
         Route::post('feature-store/{id?}', [FeatureController::class, 'storeFeature'])->name('feature.store');
         Route::post('feature-delete/{id}', [FeatureController::class, 'deleteFeature'])->name('feature.delete');
 
+        //Event gallary
         Route::get('eventgallary-add/{id?}', [EventgallaryController::class, 'addEventgallary'])->name('eventgallary.add');
         Route::get('eventgallary-list', [EventgallaryController::class, 'eventgallaryList'])->name('eventgallary.list');
         Route::post('eventgallary-store/{id?}', [EventgallaryController::class, 'storeEventgallary'])->name('eventgallary.store');

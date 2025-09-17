@@ -23,62 +23,26 @@
 
 		<div class="container">
 			<div class="row">
+				@foreach($blogs as $blog)
 				<div class="col-lg-4 mb-4">
 					<div class="blog-card">
-						<img src="https://xcloud.peacefulqode.co.in/wp-content/uploads/2023/03/8-1.jpg"
+						<img src="{{ $blog->image }}"
 							alt="God of Space Wars">
 						<div class="blog-content">
 							<div class="blog-category">
-								<a href="#">Collection</a>
+								<a href="#">{{ $blog->category->name ?? 'No Category' }}</a>
 							</div>
 							<div class="blog-meta">
-								<span>March 6, 2023</span> | <span>0 Comments</span>
+								<span>{{ date('F j, Y', strtotime($blog->publish_date)) }}</span> | <span>0 Comments</span>
 							</div>
-							<h5 class="blog-title">God of Space Wars Collector’s Edition</h5>
-							<p>It is a long established fact that a reader will be distracted by the readable content of a
-								page when looking at its layout.</p>
-							<a href="blogs-details.html" class="mybtn1">Read More</a>
+							<h5 class="blog-title">{{ $blog->title }}</h5>
+							<p>{{ Str::words(strip_tags($blog->content), 20, '...') }}</p>
+							<a href="blog-detail/{{ $blog->id }}" class="secondary-clr">Read More</a>
 						</div>
 					</div>
 				</div>
+				@endforeach
 	
-				<!-- Card 2 -->
-				<div class="col-lg-4 mb-4">
-					<div class="blog-card">
-						<img src="https://xcloud.peacefulqode.co.in/wp-content/uploads/2023/03/9-1.jpg" alt="New Trailer">
-						<div class="blog-content">
-							<div class="blog-category">
-								<a href="#">Gaming</a>
-							</div>
-							<div class="blog-meta">
-								<span>March 6, 2023</span> | <span>0 Comments</span>
-							</div>
-							<h5 class="blog-title">New Trailer Is Released Cloud Gaming !</h5>
-							<p>It is a long established fact that a reader will be distracted by the readable content of a
-								page when looking at its layout.</p>
-							<a href="blogs-details.html" class="mybtn1">Read More</a>
-						</div>
-					</div>
-				</div>
-	
-				<!-- Card 3 -->
-				<div class="col-lg-4 mb-4">
-					<div class="blog-card">
-						<img src="https://xcloud.peacefulqode.co.in/wp-content/uploads/2023/03/10.jpg" alt="Cree Peth">
-						<div class="blog-content">
-							<div class="blog-category">
-								<a href="#">Gaming</a>
-							</div>
-							<div class="blog-meta">
-								<span>March 1, 2023</span> | <span>0 Comments</span>
-							</div>
-							<h5 class="blog-title">Cree Peth You’re A Behold Heaven</h5>
-							<p>It is a long established fact that a reader will be distracted by the readable content of a
-								page when looking at its layout.</p>
-								<a href="blogs-details.html" class="mybtn1">Read More</a>
-						</div>
-					</div>
-				</div>
 	
 			</div>
 		</div>

@@ -38,14 +38,14 @@
       
       <!-- Logo + Social -->
       <div class="wow animate__animated animate__fadeInUp" data-wow-delay="0.2s">
-        <img class="img-fluid footerLogo" src="{{ url('front/assets/images/new/logo/logoWhite.svg') }}" alt="">
+        <img class="img-fluid footerLogo" src="{{ $setting->logo }}" alt="">
         <div class="social-links mt-4">
           <ul class="text-start">
-            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+            @if(!empty($setting->fb_link))<li><a href="{{ $setting->fb_link }}"><i class="fab fa-facebook-f"></i></a></li>@endif
+            @if(!empty($setting->twitter_link))<li><a href="{{ $setting->twitter_link }}"><i class="fab fa-twitter"></i></a></li>@endif
+            @if(!empty($setting->yb_link))<li><a href="{{ $setting->yb_link }}"><i class="fab fa-youtube"></i></a></li>@endif
+            @if(!empty($setting->linkedin_link))<li><a href="{{ $setting->linkedin_link }}"><i class="fab fa-linkedin-in"></i></a></li>@endif
+            @if(!empty($setting->insta_link))<li><a href="{{ $setting->insta_link }}"><i class="fab fa-instagram"></i></a></li>@endif
           </ul>
         </div>
       </div>
@@ -64,11 +64,11 @@
       <!-- Contact -->
       <div class="wow animate__animated animate__fadeInUp" data-wow-delay="0.6s">
         <h4>Contact Us</h4>
-        <p><i class="fas fa-phone me-2 secondary-clr"></i> <strong>+49 176 77208995</strong></p>
-        <p><i class="fas fa-envelope me-2 secondary-clr"></i> Info@futureboxsystems.com</p>
+        <p><i class="fas fa-phone me-2 secondary-clr"></i> <strong>+{{ $setting->phone1 }}</strong></p>
+        <p><i class="fas fa-envelope me-2 secondary-clr"></i> {{ $setting->email }}</p>
         <p class="d-flex gap-3">
           <i class="fas fa-map-marked-alt secondary-clr"></i>
-          <span>Future Box Systems<br>Betzdorfer Straße 2<br>50679 Köln</span>
+          <span>{{ $setting->website_name }}<br>{{ $setting->address }}</span>
         </p>
       </div>
     </div>

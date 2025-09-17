@@ -1,6 +1,12 @@
 @extends('front.layout.main')
 @section('main-section')
 <!-- Breadcrumb Area Start -->
+ @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
 <section class="breadcrumb-area about">
 	<div class="container">
 		<div class="row">
@@ -25,18 +31,19 @@
                 <div class="contactFormBox">
                     <h2 class="fs-2 fw-bold mb-4 text-light text-uppercase wow animate__fadeInDown">Get in touch today!</h2>
                     <p class="mb-4 wow animate__fadeInUp">Fill out the form below to connect with our team. We’re committed to providing you with the support and guidance you need.</p>
-                    <form>
+                    <form action="{{ route('contact-form') }}" method="post">
+                        @csrf
                         <div class="mb-3 wow animate__fadeInUp" data-wow-delay="0.3s">
                             <label class="form-label">Your Full Name</label>
-                            <input type="text" class="form-control" placeholder="Enter Your Full Name">
+                            <input type="text" class="form-control" name="fullname" placeholder="Enter Your Full Name">
                         </div>
                         <div class="mb-3 wow animate__fadeInUp" data-wow-delay="0.4s">
                             <label class="form-label">Your Email</label>
-                            <input type="email" class="form-control" placeholder="Enter Your Email">
+                            <input type="email" class="form-control" name="email" placeholder="Enter Your Email">
                         </div>
                         <div class="mb-3 wow animate__fadeInUp" data-wow-delay="0.5s">
                             <label class="form-label">Message</label>
-                            <textarea class="form-control" rows="4" placeholder="Enter Your Message"></textarea>
+                            <textarea class="form-control" rows="4" name="message" placeholder="Enter Your Message"></textarea>
                         </div>
                         <div class="form-check mb-3 wow animate__fadeInUp" data-wow-delay="0.6s">
                             <input class="form-check-input" type="checkbox" id="consentCheck">
@@ -58,7 +65,7 @@
                                 <i class="fas fa-phone"></i>
                             </div>
                             <span class="fw-bold primary-clr">
-                                <a href="tel:+4917677208995" class="text-decoration-none text-light">+49 176 77208995</a>
+                                <a href="tel:+4917677208995" class="text-decoration-none text-light">+{{$setting->phone1}}</a>
                             </span>
                         </div>
                     </div>
@@ -70,7 +77,7 @@
                             <div class="bg-primary text-white rounded-circle d-flex justify-content-center align-items-center me-3" style="width:40px; height:40px;">
                                 <i class="fas fa-envelope"></i>
                             </div>
-                            <a href="mailto:info@futureboxsystems.com" class="text-decoration-none primary-clr text-light fw-bold">info@futureboxsystems.com</a>
+                            <a href="mailto:{{$setting->email}}" class="text-decoration-none primary-clr text-light fw-bold">{{$setting->email}}</a>
                         </div>
                     </div>
 
@@ -81,7 +88,7 @@
                             <div class="bg-primary text-white rounded-circle d-flex justify-content-center align-items-center me-3" style="width:40px; height:40px;">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
-                            <span class="fw-bold">Betzdorfer Straße 2<br>50679 Köln</span>
+                            <span class="fw-bold">{{$setting->address}}</span>
                         </div>
                     </div>
 

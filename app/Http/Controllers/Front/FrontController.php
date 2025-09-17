@@ -24,8 +24,11 @@ class FrontController extends Controller
             $service = Service::where('status' , 1)->get();
             $event = Event::where('status' , 1)->get();
             $team = Team::limit(3)->where('status' , 1)->get();
-            $blogs = Blog::where('status' , 1)->get();
-
+            $blogs = Blog::with('category')
+                ->limit(3)
+                ->where('status', 1)
+                ->get();
+            // dd($blogs);
             return view('front.index', compact(
                 'banner',
                 'about',
@@ -52,19 +55,5 @@ class FrontController extends Controller
             return redirect()->back()->with('error', 'Something went wrong while loading the About Us page.');
         }
     }
-
-
-    public function contact(){
-            return view('front.contact');
-    }
-
-    public function blog(){
-            return view('front.blogs');
-    }
-
-    public function blogDetails(){
-            return view('front.blogs-details');
-    }
-
 
 }
