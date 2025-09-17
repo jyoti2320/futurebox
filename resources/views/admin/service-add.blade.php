@@ -21,10 +21,10 @@
 
                             {{-- Name --}}
                             <div class="mb-3">
-                                <label for="name" class="form-label">Name <span
+                                <label for="name" class="form-label">Category <span
                                         class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="name" id="name"
-                                    value="{{ old('name', $service->name ?? '') }}" placeholder="Enter Service Name"
+                                    value="{{ old('name', $service->name ?? '') }}" placeholder="Enter Category Name"
                                      />
                             </div>
 
