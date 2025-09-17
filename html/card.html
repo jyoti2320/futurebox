@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Universal Card Web Component</title>
+<style>
+  /* Default card style */
+  .card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    max-width: 300px;
+    margin: 10px;
+  }
+
+  .card-image img {
+    width: 100%;
+    display: block;
+  }
+
+  .card-body {
+    padding: 16px;
+  }
+
+  .card-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  .card-content {
+    font-size: 0.9em;
+    margin-bottom: 12px;
+  }
+
+  .card-actions button {
+    padding: 8px 12px;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .card-actions button:hover {
+    background: #2563eb;
+  }
+
+  /* Variants */
+  .primary-card {
+    border-color: #3b82f6;
+  }
+
+  .secondary-card {
+    border-color: #f59e0b;
+  }
+</style>
+</head>
+<body>
+
+<my-card class="primary-card">
+  <img slot="image" src="https://via.placeholder.com/300x150" alt="Sample">
+  <h3 slot="title">Primary Card</h3>
+  <p slot="content">This is the description for the primary card.</p>
+  <button slot="actions">Learn More</button>
+</my-card>
+
+<my-card class="secondary-card">
+  <h3 slot="title">Secondary Card</h3>
+  <p slot="content">This card has no image, but still works.</p>
+  <button slot="actions">Buy Now</button>
+</my-card>
+
+<script>
+class MyCard extends HTMLElement {
+  constructor() {
+    super();
+    const shadow = this.attachShadow({ mode: "open" });
+
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("card");
+
+    wrapper.innerHTML = `
+      <div class="card-image"><slot name="image"></slot></div>
+      <div class="card-body">
+        <div class="card-title"><slot name="title"></slot></div>
+        <div class="card-content"><slot name="content"></slot></div>
+        <div class="card-actions"><slot name="actions"></slot></div>
+      </div>
+    `;
+
+    shadow.appendChild(wrapper);
+
+    // Inject styles inside shadow DOM
+    const style = document.createElement("style");
+    style.textContent = document.querySelector("style").textContent;
+    shadow.appendChild(style);
+  }
+
+  connectedCallback() {
+    const wrapper = this.shadowRoot.querySelector(".card");
+    this.classList.forEach(cls => wrapper.classList.add(cls));
+  }
+}
+
+customElements.define("my-card", MyCard);
+</script>
+
+</body>
+</html>

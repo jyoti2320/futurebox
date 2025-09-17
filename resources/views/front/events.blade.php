@@ -1,0 +1,87 @@
+	
+@extends('front.layout.main')
+@section('main-section')
+
+	<!-- Breadcrumb Area Start -->
+	<section class="breadcrumb-area about">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<h2>Events </h2>
+					<ul class="breadcrumb-list">
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Events</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Breadcrumb Area End -->
+
+	<section class="about-section events-section position-relative overflow-hidden pb-0">
+		<img class="s1" src="{{ url('front/assets/images/about/s1.png') }}" alt="">
+		<img class="s2" src="{{ url('front/assets/images/about/s2.png') }}" alt="">
+		<div class="container">
+			<!-- Filter buttons -->
+			<div class="filter-buttons">
+				<button class="active" data-filter="all">All</button>
+				<button data-filter="activities">Activities</button>
+				<button data-filter="fuuturebox-V1">Futurebox V1</button>
+			</div>
+			<div class="gallery"></div>
+
+			<div class="text-center mt-4">
+				<button id="loadMoreBtn" class="btn btn-primary btn-style-one border-0">
+					Load More
+				</button>
+			</div>
+		</div>
+	</section>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+let currentCategory = 'all';
+let currentPage = 1;
+$(document).ready(function () {
+    // Initial load
+    loadImages(true);
+    // Filter buttons
+    $('.filter-btn').on('click', function () {
+        $('.filter-btn').removeClass('active');
+        $(this).addClass('active');
+        currentCategory = $(this).data('category');
+        currentPage = 1;
+        loadImages(true);
+    });
+    // Load more
+    $('#loadMoreBtn').on('click', function () {
+        currentPage++;
+        loadImages();
+    });
+});
+function loadImages(reset = false) {
+    $.ajax({
+        url: "{{ route('event.load') }}",
+        data: { category: currentCategory, page: currentPage },
+        success: function (data) {
+            if (reset) {
+                $('.gallery').html(data.html);
+            } else {
+                $('.gallery').append(data.html);
+            }
+            // Show/Hide load more
+            if (!data.hasMore) {
+                $('#loadMoreBtn').hide();
+            } else {
+                $('#loadMoreBtn').show();
+            }
+            // Re-init lightbox if needed
+            if (typeof GLightbox !== 'undefined') {
+                GLightbox({ selector: '.glightbox' });
+            }
+        }
+    });
+}
+</script>
+@endsection
+
