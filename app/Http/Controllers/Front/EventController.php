@@ -36,23 +36,31 @@ class EventController extends Controller
             $allImages = collect();
             // $shortDesc = null;
 
+            // foreach ($galleries as $gallery) {
+            //     // dd($gallery);
+            //     $images = $gallery->image;
+            //     foreach ($images as $image) {
+            //         $allImages->push([
+            //             'image' => $gallery->image,
+            //             'category' => $gallery->name,
+            //         ]);
+            //     }
+            // }
+
             foreach ($galleries as $gallery) {
-                // dd($gallery);
-                $images = $gallery->image;
-                // foreach ($images as $image) {
+                $images = explode(',', $gallery->images);
+                foreach ($images as $image) {
                     $allImages->push([
-                        'image' => $gallery->image,
+                        'image' => $image,
                         'category' => $gallery->name,
                     ]);
-                // }
+                }
             }
-            // dd($allImages);
+
             if ($category !== 'all') {
-                // Filter images by category
-                $allImages = $allImages->where('title', $category)->values();
+                $allImages = $allImages->where('category', $category)->values();
                 if ($page == 1) {
-                // Get short_desc from the first matching gallery
-                $matchingGallery = $galleries->firstWhere('title', $category);
+                $matchingGallery = $galleries->firstWhere('category', $category);
                 if ($matchingGallery) {
                     // $shortDesc = $matchingGallery->sort_desc ?? null;
                 }
@@ -61,6 +69,14 @@ class EventController extends Controller
             }
 
             $pagedImages = $allImages->forPage($page, $perPage)->values();
+
+            // if ($category !== 'all') {
+            //     $allImages = $allImages->where('category', $category)->values();
+            // }
+
+            // // Paginate
+            // $pagedImages = $allImages->forPage($page, $perPage)->values();
+
 
             return response()->json([
                 'html' => view('front.partial.event-items', [

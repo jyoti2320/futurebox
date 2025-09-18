@@ -21,7 +21,7 @@
 
                             {{-- Name --}}
                             <div class="mb-3">
-                                <label for="name" class="form-label">Category <span
+                                <label for="name" class="form-label">Title <span
                                         class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="name" id="name"
                                     value="{{ old('name', $service->name ?? '') }}" placeholder="Enter Category Name"
@@ -30,7 +30,7 @@
 
                             {{-- Image --}}
                             <div class="mb-3">
-                                <label for="image" class="form-label">Image</label>
+                                <label for="image" class="form-label">Cover Image</label>
                                 <input type="file" class="form-control" name="image" id="image">
                                 @if (!empty($service->image))
                                     <div class="mt-2">
@@ -47,6 +47,31 @@
                                      />
                             </div>
 
+                            {{-- Year --}}
+                            <div class="mb-3">
+                                <label for="year" class="form-label">Year <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="year" id="year"
+                                    value="{{ old('year', $service->year ?? '') }}" placeholder="Enter Year"
+                                     />
+                            </div>
+
+                            {{-- Image --}}
+                            <div class="mb-3">
+                                <label class="mt-4">Multiple Images</label>
+                                <input type="file" id="images" name="images[]" class="form-control" accept="image/png, image/jpeg, image/jpg" multiple>
+                                @if(!empty($service) && !empty($service->images))
+                                    <div class="row mt-3">
+                                        @foreach(explode(',', $service->images) as $key => $image)
+                                            <div class="col-md-2" id="image_{{ $key }}">
+                                                <img src="{{ asset($image) }}" class="img-responsive thumb thumbnail" width="100px" height="100px">
+                                                <!-- <a href="javascript:void(0);" onclick="removeImage('{{ $key }}', '{{ $image }}')">X</a> -->
+                                                <input type="hidden" name="old_images[]" value="{{ $image }}">
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                @endif
+
+                            </div>
                          
                             {{-- Status --}}
                             <div class="mb-3 form-check form-switch">

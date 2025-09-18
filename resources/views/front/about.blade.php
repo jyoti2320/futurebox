@@ -134,19 +134,21 @@
 					<div class="single-team p-4 text-center h-100">
 						<div class="image">
 							<img class="shape" src="{{ url('front/assets/images/team/bg.png') }}" alt="">
-							<img class="member" src="{{$item4->image}}" alt="Mahmoud Samy">
+							<img class="member" src="{{$item4->image}}" alt="{{$item4->name}}">
 						</div>
 						<div class="mt-4">
 							<h4>{{$item4->name}}</h4>
 							<h5>{{$item4->position}}</h5>
 							<p>{{$item4->qualification}}</p>
-							<p>{!! $item4->content !!}</p>
-							<p class="mb-0">&nbsp;</p>
+							<div class="teamDesc">
+								<p>{!! $item4->content !!}</p>
+							</div>
 							<a href="mailto:{{$item4->email}}" class="link">
 								{{$item4->email}}
 							</a>
 						</div>
 					</div>
+
 				</div>
 			@endforeach
 		</div>

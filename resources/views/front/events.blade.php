@@ -24,9 +24,9 @@
 		<div class="container">
 			<!-- Filter buttons -->
 			<div class="filter-buttons">
-				<button class="active" data-filter="all">All</button>
+				<button class="filter-btn active" data-filter="all">All</button>
                 @foreach($events as $event)
-				    <button data-filter="{{$event->name}}">{{$event->name}}</button>
+				    <button class="filter-btn" data-filter="{{$event->name}}">{{$event->name}}</button>
                 @endforeach
 				<!-- <button data-filter="fuuturebox-V1">Futurebox V1</button> -->
 			</div>
@@ -51,7 +51,7 @@ $(document).ready(function () {
     $('.filter-btn').on('click', function () {
         $('.filter-btn').removeClass('active');
         $(this).addClass('active');
-        currentCategory = $(this).data('category');
+        currentCategory = $(this).data('filter');
         currentPage = 1;
         loadImages(true);
     });
@@ -68,6 +68,7 @@ function loadImages(reset = false) {
         success: function (data) {
             if (reset) {
                 $('.gallery').html(data.html);
+                $('#loadMoreBtn').hide();
             } else {
                 $('.gallery').append(data.html);
             }

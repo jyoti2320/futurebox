@@ -1,11 +1,11 @@
 <div class="grid-gallery mt-3">
-    @foreach($images as $image)
+    		@foreach($images as $image)
 				<div class="grid-item {{$image['category']}}">
-					<a href="{{ $image['image'] }}" data-fancybox="gallery" data-caption="{{$image['category']}}">
-						<img src="{{ $image['image'] }}" alt="">
+					<a href="{{ asset($image['image']) }}" data-fancybox="gallery" data-caption="{{$image['category']}}">
+						<img src="{{ asset($image['image']) }}" alt="">
 					</a>
 				</div>
-                @endforeach
+            @endforeach
 				<!-- <div class="grid-item fuuturebox-V1">
 					<a href="{{ url('front/assets/images/new/event/event-2.jpg') }}" data-fancybox="gallery" data-caption="fuuturebox-V1 Image 1">
 						<img src="{{ url('front/assets/images/new/event/event-2.jpg') }}" alt="">

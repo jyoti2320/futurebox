@@ -32,7 +32,7 @@
                     <thead>
                         <tr>
                             <th>ID.</th>
-                            <th>Category</th>
+                            <th>Title</th>
                             <th>Image</th>
                             <th>Location</th>
                             <th>Action</th>

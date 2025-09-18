@@ -274,7 +274,7 @@
 
 								<p class="">{{$item2->location}}</p>
 
-								<p class="badge bg-primary">2024</p>
+								<p class="badge bg-primary">{{$item2->year}}</p>
 
 							</div>
 
@@ -383,7 +383,7 @@
 
 				<div class="col-md-4">
 
-					<div class="feature-card wow animate__animated animate__fadeInUp" data-wow-delay="0.2s" num="1">
+					<div class="feature-card wow animate__animated animate__fadeInUp" data-wow-delay="{{ number_format(0.2 * $loop->iteration, 2) }}s" num="1">
 
 						<div class="text-center">
 							<img src="{{ $item3->image }}" alt="Why Choose" class="feature-image">
@@ -512,11 +512,11 @@
 				<!-- Member 1 -->
 
 				@foreach ($team as $item4)
-				<div class="col-md-6 col-lg-4 mb-4 order-2 order-lg-1 wow animate__animated animate__fadeInUp" data-wow-delay="0.3s">
+				<div class="col-md-6 col-lg-4 mb-4 order-2 order-lg-1 wow animate__animated animate__fadeInUp" data-wow-delay="{{ number_format(0.3 * $loop->iteration, 2) }}s">
 					<div class="single-team p-4 text-center h-100">
 						<div class="image">
 							<img class="shape" src="{{ url('front/assets/images/team/bg.png') }}" alt="">
-							<img class="member" src="{{$item4->image}}" alt="Mahmoud Samy">
+							<img class="member" src="{{$item4->image}}" alt="{{$item4->name}}">
 						</div>
 						<div class="mt-4">
 							<h4>{{$item4->name}}</h4>
@@ -587,7 +587,7 @@
 				<!-- Card 1 -->
 
 				@foreach($blogs as $blog)
-				<div class="col-lg-4 mb-4 wow animate__animated animate__fadeInUp" data-wow-delay="0.3s">
+				<div class="col-lg-4 mb-4 wow animate__animated animate__fadeInUp" data-wow-delay="{{ number_format(0.3 * $loop->iteration, 2) }}s">
 					<div class="blog-card">
 						<img src="{{ $blog->image }}"
 							alt="God of Space Wars">

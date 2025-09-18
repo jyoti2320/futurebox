@@ -26,25 +26,38 @@
                     @include('front.layout.notifications')
                     <h2 class="fs-2 fw-bold mb-4 text-light text-uppercase wow animate__fadeInDown">Get in touch today!</h2>
                     <p class="mb-4 wow animate__fadeInUp">Fill out the form below to connect with our team. We’re committed to providing you with the support and guidance you need.</p>
-                    <form action="{{ route('contact-form') }}" method="post">
+                    <form action="{{ route('contact-form') }}" method="post" class="needs-validation" novalidate>
                         @csrf
                         <div class="mb-3 wow animate__fadeInUp" data-wow-delay="0.3s">
-                            <label class="form-label">Your Full Name</label>
-                            <input type="text" class="form-control" name="fullname" placeholder="Enter Your Full Name">
+                            <label class="form-label" for="fullname">Your Full Name</label>
+                            <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Enter Your Full Name" required>
+                            <div class="invalid-feedback" id="fullnameError">
+                                Please enter a Fullname.
+                            </div>
                         </div>
                         <div class="mb-3 wow animate__fadeInUp" data-wow-delay="0.4s">
                             <label class="form-label">Your Email</label>
-                            <input type="email" class="form-control" name="email" placeholder="Enter Your Email">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Enter Your Email" required>
+                            <div class="invalid-feedback" id="emailError">
+                                Please enter a valid Email.
+                            </div>
                         </div>
                         <div class="mb-3 wow animate__fadeInUp" data-wow-delay="0.5s">
                             <label class="form-label">Message</label>
-                            <textarea class="form-control" rows="4" name="message" placeholder="Enter Your Message"></textarea>
+                            <textarea class="form-control" rows="4" name="message" id="message" placeholder="Enter Your Message" required></textarea>
+                             <div class="invalid-feedback" id="messageError">
+                                Please enter a Message.
+                            </div>
                         </div>
                         <div class="form-check mb-3 wow animate__fadeInUp" data-wow-delay="0.6s">
-                            <input class="form-check-input" type="checkbox" id="consentCheck">
+                            <input class="form-check-input" type="checkbox" id="consentCheck" name="consent">
                             <label class="form-check-label text-light" for="consentCheck">
                                 I agree to receive emails, newsletters and promotional messages
                             </label>
+                            <div class="invalid-feedback" id="consentError">
+                                You must agree before submitting.
+                            </div>
+
                         </div>
                         <button type="submit" class="mybtn1 border-0 mt-4 wow animate__pulse" data-wow-delay="0.7s">SEND MESSAGE</button>
                     </form>
@@ -92,6 +105,21 @@
         </div>
     </div>
 </section>
+<script>
+    (() => {
+        'use strict';
+        const forms = document.querySelectorAll('.needs-validation');
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    })();
+</script>
 
 
 @endsection

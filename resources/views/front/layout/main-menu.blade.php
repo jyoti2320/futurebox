@@ -53,19 +53,19 @@
 							<div class="collapse navbar-collapse fixed-height" id="main_menu">
 								<ul class="navbar-nav mx-auto">
 									<li class="nav-item">
-										<a class="nav-link active" href="/">Home</a>
+										<a class="nav-link {{ Route::is('index') ? 'active' : '' }}"  href="/">Home</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="/about">About Us</a>
+										<a class="nav-link {{ Route::is('about') ? 'active' : '' }}" href="/about">About Us</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="/event">Events</a>
+										<a class="nav-link {{ Route::is('event') ? 'active' : '' }}" href="/event">Events</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="/blog">Blogs</a>
+										<a class="nav-link {{ Route::is('blog') ? 'active' : '' }}" href="/blog">Blogs</a>
 									</li>
 									<li class="nav-item">
-											<a class="nav-link" href="/contact">Contact</a>
+											<a class="nav-link {{ Route::is('contact') ? 'active' : '' }}" href="/contact">Contact</a>
 									</li>		
 								</ul>
 								<div class="menuRight">
