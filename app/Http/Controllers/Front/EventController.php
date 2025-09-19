@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
-use App\Models\Service;
+use App\Models\Event;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -13,8 +13,8 @@ class EventController extends Controller
 {
     public function event(){
         try {
-            // $events = Service::where('status' ,1)->groupBy('name')->get();
-            $events = Service::where('status', 1)
+            // $events = Event::where('status' ,1)->groupBy('name')->get();
+            $events = Event::where('status', 1)
                 ->select('name')
                 ->groupBy('name')
                 ->get();
@@ -32,7 +32,7 @@ class EventController extends Controller
             $page = $request->input('page', 1);
             $perPage = 5;
 
-            $galleries = Service::all();
+            $galleries = Event::all();
             $allImages = collect();
             // $shortDesc = null;
 

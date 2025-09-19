@@ -128,16 +128,16 @@
 
            
             <li
-                class="menu-item {{ $currentRoute  == 'admin.event.list' || $currentRoute == 'admin.event.add' ? 'active' : '' }}">
-                <a href="{{ route('admin.event.list') }}" class="menu-link">
+                class="menu-item {{ $currentRoute  == 'admin.service.list' || $currentRoute == 'admin.service.add' ? 'active' : '' }}">
+                <a href="{{ route('admin.service.list') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-news"></i>
                     <div data-i18n="What we offer">What we offer</div>
                 </a>
             </li>
 
             <li
-                class="menu-item {{ $currentRoute  == 'admin.service.list' || $currentRoute == 'admin.service.add' ? 'active' : '' }}">
-                <a href="{{ route('admin.service.list') }}" class="menu-link">
+                class="menu-item {{ $currentRoute  == 'admin.event.list' || $currentRoute == 'admin.event.add' ? 'active' : '' }}">
+                <a href="{{ route('admin.event.list') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-news"></i>
                     <div data-i18n="Events">Events</div>
                 </a>

@@ -3,7 +3,7 @@
     <!-- Content -->
 
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4 d-inline-block"><span class="text-muted fw-light">Master /</span> Event List</h4>
+        <h4 class="fw-bold py-3 mb-4 d-inline-block"><span class="text-muted fw-light">Master /</span> Events List</h4>
         <a class="btn btn-primary float-end" href="{{ route('admin.event.add') }}"><i class="bx bx-box-alt me-1"></i> Add New
             data</a>
 
@@ -12,7 +12,7 @@
         <form method="GET" action="{{ route('admin.event.list') }}" class="mb-3">
             <div class="row">
                 <div class="col-md-4">
-                    <input type="text" name="search" class="form-control" placeholder="Search by Event Title"
+                    <input type="text" name="search" class="form-control" placeholder="Search by Name"
                         value="{{ request('search') }}">
                 </div>
 
@@ -22,19 +22,18 @@
                 </div>
             </div>
         </form>
-
         <!-- Basic Bootstrap Table -->
         <div class="card">
-            <h5 class="card-header">Event List</h5>
+            <h5 class="card-header">Events List</h5>
 
             <div class="table-responsive text-nowrap">
                 <table class="table">
                     <thead>
                         <tr>
                             <th>ID.</th>
-                            <th>Name</th>
+                            <th>Title</th>
                             <th>Image</th>
-                            <th>Short description</th>
+                            <th>Location</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -43,9 +42,9 @@
                             <tr>
                                 <td>{{ $events->id }}</td>
                                 <td>{{ $events->name }}</td>
-                                <td> <img src="{{ asset($events->image) }}" alt="Event Image" width="60" height="60">
+                                <td> <img src="{{ asset($events->image) }}" alt="event Image" width="60" height="60">
                                 </td>
-                                <td>{{ $events->short_desc }}</td>
+                                <td>{{ $events->location }}</td>
                                 <td>
                                     {{-- Edit --}}
                                     <a class="btn btn-sm btn-icon btn-warning"
@@ -70,7 +69,7 @@
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    Are you sure you want to delete Event Title -
+                                                    Are you sure you want to delete event Title -
                                                     <strong>{{ $events->title }}</strong>?
                                                 </div>
                                                 <div class="modal-footer">

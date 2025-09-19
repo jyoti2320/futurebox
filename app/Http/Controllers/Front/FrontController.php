@@ -21,8 +21,8 @@ class FrontController extends Controller
             $banner = Banner::first();
             $about = About::first();
             $showcase = Showcase::where('status' , 1)->get();
-            $service = Service::where('status' , 1)->get();
             $event = Event::where('status' , 1)->get();
+            $service = Service::where('status' , 1)->get();
             $team = Team::limit(3)->where('status' , 1)->get();
             $blogs = Blog::with('category')
                 ->limit(3)

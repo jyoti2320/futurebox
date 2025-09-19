@@ -7,56 +7,80 @@
     </style>
     <!-- Content -->
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4">Add Event</h4>
-
+        <h4 class="fw-bold py-3 mb-4">Add Events</h4>
         <div class="row">
             <div class="col-md-12">
                 <div class="card mb-4">
-                    <form action="{{ route('admin.event.store', $event->id ?? '') }}" method="POST"
+                    <form action="{{ route('admin.service.store', $service->id ?? '') }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
-                        <input type="hidden" name="id" value="{{ $event->id ?? '' }}">
+                        <input type="hidden" name="id" value="{{ $service->id ?? '' }}">
 
                         <div class="card-body">
 
                             {{-- Name --}}
                             <div class="mb-3">
-                                <label for="name" class="form-label">Event Name <span
+                                <label for="name" class="form-label">Title <span
                                         class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="name" id="name"
-                                    value="{{ old('name', $event->name ?? '') }}" placeholder="Enter Event Name"
+                                    value="{{ old('name', $service->name ?? '') }}" placeholder="Enter Category Name"
                                      />
                             </div>
 
                             {{-- Image --}}
                             <div class="mb-3">
-                                <label for="image" class="form-label">Image</label>
+                                <label for="image" class="form-label">Cover Image</label>
                                 <input type="file" class="form-control" name="image" id="image">
-                                @if (!empty($event->image))
+                                @if (!empty($service->image))
                                     <div class="mt-2">
-                                        <img src="{{ asset($event->image) }}" width="150" alt="Image">
+                                        <img src="{{ asset($service->image) }}" width="150" alt="Image">
                                     </div>
                                 @endif
                             </div>
 
-                            {{-- Short Description --}}
+                            {{-- Location --}}
                             <div class="mb-3">
-                                <label for="editor1" class="form-label">Short Description <span class="text-danger">*</span></label>
-                                <textarea name="short_desc" id="editor1" class="form-control" rows="4">{{ old('short_desc', $event->short_desc ?? '') }}</textarea>
+                                <label for="location" class="form-label">Location <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="location" id="location"
+                                    value="{{ old('location', $service->location ?? '') }}" placeholder="Enter Service Name"
+                                     />
                             </div>
 
-                            {{-- Long Description --}}
+                            {{-- Year --}}
                             <div class="mb-3">
-                                <label for="editor2" class="form-label">Long Description <span class="text-danger">*</span></label>
-                                <textarea name="description" id="editor2" class="form-control" rows="4">{{ old('description', $event->description ?? '') }}</textarea>
+                                <label for="year" class="form-label">Year <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="year" id="year"
+                                    value="{{ old('year', $service->year ?? '') }}" placeholder="Enter Year"
+                                     />
                             </div>
 
+                            {{-- Image --}}
+                            <div class="mb-3">
+                                <label class="mt-4">Multiple Images</label>
+                                <input type="file" id="images" name="images[]" class="form-control" accept="image/png, image/jpeg, image/jpg" multiple>
+                                @if(!empty($service) && !empty($service->images))
+                                    <div class="row mt-3">
+                                        @foreach(explode(',', $service->images) as $key => $image)
+                                            <div class="col-md-2" id="image_{{ $key }}">
+                                                <img src="{{ asset($image) }}" class="img-responsive thumb thumbnail" width="100px" height="100px">
+                                                <!-- <a href="javascript:void(0);" onclick="removeImage('{{ $key }}', '{{ $image }}')">X</a> -->
+                                                <input type="hidden" name="old_images[]" value="{{ $image }}">
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                @endif
+
+                            </div>
+                         
                             {{-- Status --}}
                             <div class="mb-3 form-check form-switch">
+                                <input type="hidden" name="status" value="0"> {{-- hidden input --}}
                                 <label class="form-check-label" for="status">Status</label>
-                                <input type="checkbox" class="form-check-input" name="status" id="status"
-                                    value="1" {{ old('status', $blog->status ?? 1) == 1 ? 'checked' : '' }}>
+                                <input type="checkbox" class="form-check-input" 
+                                    name="status" id="status" value="1"
+                                    {{ old('status', $service->status ?? 1) == 1 ? 'checked' : '' }}>
                             </div>
+
 
                             {{-- Submit --}}
                             <div>

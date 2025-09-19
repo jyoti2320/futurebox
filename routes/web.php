@@ -134,17 +134,18 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('about-store/{id?}', [AboutController::class, 'storeAbout'])->name('about.store');
         Route::post('about-delete/{id}', [AboutController::class, 'deleteAbout'])->name('about.delete');
 
+        //what we offer
+        Route::get('service-add/{id?}', [ServiceController::class, 'addService'])->name('service.add');
+        Route::get('service-list', [ServiceController::class, 'serviceList'])->name('service.list');
+        Route::post('service-store/{id?}', [ServiceController::class, 'storeService'])->name('service.store');
+        Route::post('service-delete/{id}', [ServiceController::class, 'deleteService'])->name('service.delete');
+
         //Event
         Route::get('event-add/{id?}', [EventController::class, 'addEvent'])->name('event.add');
         Route::get('event-list', [EventController::class, 'eventList'])->name('event.list');
         Route::post('event-store/{id?}', [EventController::class, 'storeEvent'])->name('event.store');
         Route::post('event-delete/{id}', [EventController::class, 'deleteEvent'])->name('event.delete');
 
-        //Service
-        Route::get('service-add/{id?}', [ServiceController::class, 'addService'])->name('service.add');
-        Route::get('service-list', [ServiceController::class, 'serviceList'])->name('service.list');
-        Route::post('service-store/{id?}', [ServiceController::class, 'storeService'])->name('service.store');
-        Route::post('service-delete/{id}', [ServiceController::class, 'deleteService'])->name('service.delete');
 
         //Team
         Route::get('team-add/{id?}', [TeamController::class, 'addTeam'])->name('team.add');

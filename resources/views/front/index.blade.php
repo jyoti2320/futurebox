@@ -265,7 +265,7 @@
 			<!-- Swiper Slider -->
 			<div class="swiper eventSlider wow animate__animated animate__fadeInUp" data-wow-delay="0.9s">
 				<div class="swiper-wrapper">
-					@foreach ($service as $item2)
+					@foreach ($event as $item2)
 					<div class="swiper-slide">
 						<img src="{{$item2->image}}" alt="img" />
 						<div class="slide-content">
@@ -379,7 +379,7 @@
 
 			<div class="row">
 
-				@foreach ($event as $item3)
+				@foreach ($service as $item3)
 
 				<div class="col-md-4">
 

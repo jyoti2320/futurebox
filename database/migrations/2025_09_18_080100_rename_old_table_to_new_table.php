@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('service', function (Blueprint $table) {
-            $table->string('year', 255)->nullable();
-            $table->longtext('images', 255)->nullable();
-        });
+        Schema::rename('service', 'eventData');
+        Schema::rename('event', 'serviceData');
+
     }
 
     /**
@@ -22,8 +21,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('service', function (Blueprint $table) {
-            //
-        });
+        Schema::rename('eventData', 'service');
+        Schema::rename('serviceData', 'event');
+
+
     }
 };

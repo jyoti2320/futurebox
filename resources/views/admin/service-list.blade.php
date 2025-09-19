@@ -3,7 +3,7 @@
     <!-- Content -->
 
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4 d-inline-block"><span class="text-muted fw-light">Master /</span> Events List</h4>
+        <h4 class="fw-bold py-3 mb-4 d-inline-block"><span class="text-muted fw-light">Master /</span> Service List</h4>
         <a class="btn btn-primary float-end" href="{{ route('admin.service.add') }}"><i class="bx bx-box-alt me-1"></i> Add New
             data</a>
 
@@ -12,7 +12,7 @@
         <form method="GET" action="{{ route('admin.service.list') }}" class="mb-3">
             <div class="row">
                 <div class="col-md-4">
-                    <input type="text" name="search" class="form-control" placeholder="Search by Name"
+                    <input type="text" name="search" class="form-control" placeholder="Search.."
                         value="{{ request('search') }}">
                 </div>
 
@@ -25,16 +25,16 @@
 
         <!-- Basic Bootstrap Table -->
         <div class="card">
-            <h5 class="card-header">Events List</h5>
+            <h5 class="card-header">Service List</h5>
 
             <div class="table-responsive text-nowrap">
                 <table class="table">
                     <thead>
                         <tr>
                             <th>ID.</th>
-                            <th>Title</th>
+                            <th>Name</th>
                             <th>Image</th>
-                            <th>Location</th>
+                            <th>Short description</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -43,9 +43,9 @@
                             <tr>
                                 <td>{{ $services->id }}</td>
                                 <td>{{ $services->name }}</td>
-                                <td> <img src="{{ asset($services->image) }}" alt="Service Image" width="60" height="60">
+                                <td> <img src="{{ asset($services->image) }}" alt="{{ $services->name }}" width="60" height="60">
                                 </td>
-                                <td>{{ $services->location }}</td>
+                                <td>{{ $services->short_desc }}</td>
                                 <td>
                                     {{-- Edit --}}
                                     <a class="btn btn-sm btn-icon btn-warning"

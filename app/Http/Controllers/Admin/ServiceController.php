@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 
 class ServiceController extends Controller
 {
+    
     public function addService($id = null)
     {
         try {
