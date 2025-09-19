@@ -30,7 +30,7 @@ class EventController extends Controller
         try {
             $category = $request->input('category', 'all');
             $page = $request->input('page', 1);
-            $perPage = 5;
+            $perPage = 10;
 
             $galleries = Event::all();
             $allImages = collect();

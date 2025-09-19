@@ -30,7 +30,9 @@
                 @endforeach
 				<!-- <button data-filter="fuuturebox-V1">Futurebox V1</button> -->
 			</div>
-			<div class="gallery"></div>
+			<div class="gallery">
+                <div class="grid-gallery mt-3"></div>
+            </div>
 
 			<div class="text-center mt-4">
 				<button id="loadMoreBtn" class="mybtn1 border-0">
@@ -67,10 +69,10 @@ function loadImages(reset = false) {
         data: { category: currentCategory, page: currentPage },
         success: function (data) {
             if (reset) {
-                $('.gallery').html(data.html);
+                $('.grid-gallery').html(data.html);
                 $('#loadMoreBtn').hide();
             } else {
-                $('.gallery').append(data.html);
+                $('.grid-gallery').append(data.html);
             }
             // Show/Hide load more
             if (!data.hasMore) {
@@ -79,9 +81,14 @@ function loadImages(reset = false) {
                 $('#loadMoreBtn').show();
             }
             // Re-init lightbox if needed
-            if (typeof GLightbox !== 'undefined') {
-                GLightbox({ selector: '.glightbox' });
+            // if (typeof GLightbox !== 'undefined') {
+            //     GLightbox({ selector: '.glightbox' });
+            // }
+            // fancybox/lightbox reinit
+            if ($.fancybox) {
+                $('[data-fancybox="gallery"]').fancybox();
             }
+
         }
     });
 }

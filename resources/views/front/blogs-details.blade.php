@@ -97,7 +97,7 @@
 	
 				<div class="card">
 					<div class="card-body">
-						<h4 class="card-title">Categories</h4>
+						<h4 class="card-title text-white fw-bold">Categories</h4>
 						<ul class="list-unstyled mb-0">
 							@foreach($blogCategory as $blogCategories1)
 							<li><a href="#">{{$blogCategories1->name}}</a></li>

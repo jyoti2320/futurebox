@@ -1,4 +1,4 @@
-<div class="grid-gallery mt-3">
+<!-- <div class="grid-gallery mt-3"> -->
     		@foreach($images as $image)
 				<div class="grid-item {{$image['category']}}">
 					<a href="{{ asset($image['image']) }}" data-fancybox="gallery" data-caption="{{$image['category']}}">
@@ -41,4 +41,4 @@
 						<img src="{{ url('front/assets/images/new/event/event-4.png') }}" alt="">
 					</a>
 				</div> -->
-			</div>
+			<!-- </div> -->
