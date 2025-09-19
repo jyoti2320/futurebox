@@ -932,7 +932,7 @@ Events
 
 .grid-gallery {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 15px;
     justify-content: center;
   .grid-item {

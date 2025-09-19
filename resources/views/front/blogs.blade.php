@@ -36,7 +36,8 @@
 								<span>{{ date('F j, Y', strtotime($blog->publish_date)) }}</span> | <span>0 Comments</span>
 							</div>
 							<h5 class="blog-title">{{ $blog->title }}</h5>
-							<p>{{ Str::words(strip_tags($blog->content), 20, '...') }}</p>
+							<!-- <p>{{ Str::words(strip_tags($blog->content), 20, '...') }}</p> -->
+							<p>{!! Str::words(html_entity_decode(strip_tags($blog->content)), 20, '...') !!}</p>
 							<a href="{{ route('blog-detail', $blog->slug) }}" class="secondary-clr">Read More</a>
 						</div>
 					</div>

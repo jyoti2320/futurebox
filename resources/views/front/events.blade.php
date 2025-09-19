@@ -33,7 +33,7 @@
 			<div class="gallery"></div>
 
 			<div class="text-center mt-4">
-				<button id="loadMoreBtn" class="btn btn-primary btn-style-one border-0">
+				<button id="loadMoreBtn" class="mybtn1 border-0">
 					Load More
 				</button>
 			</div>
