@@ -33,7 +33,7 @@
                         <tr>
                             <th>ID.</th>
                             <th>Image</th>
-                            <th>Heading</th>
+                            <!-- <th>Heading</th> -->
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -44,7 +44,7 @@
                                 <td>{{ $banners->id }}</td>
                                 <td> <img src="{{ asset($banners->image) }}" alt="banner Image" width="60" height="60">
                                 </td>
-                                <td>{{ $banners->heading }}</td>
+                                <!-- <td>{!! $banners->heading !!}</td> -->
                                 <td>
                                     @if($banners->status == 1)
                                         <span class="badge bg-success">Active</span>

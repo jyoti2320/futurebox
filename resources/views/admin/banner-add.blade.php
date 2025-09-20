@@ -19,6 +19,16 @@
 
                         <div class="card-body">
                         <div class="row">
+                            {{-- Heading --}}
+                            <div class="col-md-12 mb-3">
+                                <label for="editor" class="form-label">Heading <span
+                                        class="text-danger">*</span></label>
+                                <textarea name="heading" id="editor" class="form-control" rows="1">{{ old('heading', $banner->heading ?? '') }}</textarea>
+                                <!-- <input type="text" class="form-control" name="heading" id="heading"
+                                    value="{{ old('heading', $banner->heading ?? '') }}" placeholder="Enter Heading"
+                                     /> -->
+                            </div>
+
                             {{-- Image --}}
                             <div class="col-md-6 mb-3">
                                 <label for="image" class="form-label">Image</label>
@@ -30,14 +40,6 @@
                                 @endif
                             </div>
 
-                            {{-- Heading --}}
-                            <div class="col-md-6 mb-3">
-                                <label for="heading" class="form-label">Heading <span
-                                        class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="heading" id="heading"
-                                    value="{{ old('heading', $banner->heading ?? '') }}" placeholder="Enter Heading"
-                                     />
-                            </div>
 
                             {{-- Short Description --}}
                             <div class="col-md-6 mb-3">

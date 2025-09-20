@@ -94,12 +94,7 @@
                               play is loading,
                               <span class="primary-light-clr">FB-V2</span> -->
 
-							  @php
-								$heading = $banner->heading;
-								$heading = str_replace('Future', '<span class="primary-light-clr">Future</span>', $heading);
-								$heading = str_replace('FB-V2', '<span class="primary-light-clr">FB-V2</span>', $heading);
-							   @endphp
-							   	{!! $heading !!}
+							   	{!! $banner->heading !!}
 
 
                             </h1>
