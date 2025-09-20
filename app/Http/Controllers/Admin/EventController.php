@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 
 class EventController extends Controller
 {
+    
     public function addEvent($id = null)
     {
         try {
@@ -32,16 +33,18 @@ class EventController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'short_desc' => 'required|string',
-            'description' => 'required|string',
+            'location' => 'required|string',
             'image' => $id ? 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048' : 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'images.*' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         $data = [
             'name' => $request->name,
-            'short_desc' => $request->short_desc,
-            'description' => $request->description,
+            'location' => $request->location,
+            'year' => $request->year,
+            'status' => $request->status,
         ];
+
 
         try {
             if ($request->hasFile('image')) {
@@ -52,31 +55,57 @@ class EventController extends Controller
                         unlink(public_path($event->image));
                     }
                 }
-
                 $file = $request->file('image');
                 $filename = time() . rand(1000, 9999) . '.' . $file->getClientOriginalExtension();
                 $file->move(public_path('events'), $filename);
-
                 $data['image'] = 'events/' . $filename; // path for public access
             }
 
             if ($id) {
                 $event = Event::find($id);
+
+                $existingImages = $request->has('old_images') ? $request->old_images : [];
+                if ($request->hasFile('images')) {
+                    foreach ($request->file('images') as $image) {
+                        $filename = time() . rand(1000, 9999) . '.' . $image->getClientOriginalExtension();
+                        $image->move(public_path('events'), $filename);
+                        $existingImages[] = 'events/' . $filename;
+                    }
+                }
+                $originalImages = $event->images ? explode(',', $event->images) : [];
+                $imagesToDelete = array_diff($originalImages, $existingImages);
+                foreach ($imagesToDelete as $img) {
+                    if (file_exists(public_path($img))) {
+                        unlink(public_path($img));
+                    }
+                }
+                $data['images']  = implode(',', $existingImages);
+
                 if (!$event) {
-                    Log::warning("Update failed: Event with ID {$id} not found.");
-                    return redirect()->back()->with('error', 'Event not found.');
+                    Log::warning("Update failed: event with ID {$id} not found.");
+                    return redirect()->back()->with('error', 'event not found.');
                 }
 
                 $event->update($data);
-                Log::info("Event updated successfully. ID: {$id}", $data);
-                return redirect()->route('admin.event.list')->with('success', 'Event updated successfully');
+                Log::info("event updated successfully. ID: {$id}", $data);
+                return redirect()->route('admin.event.list')->with('success', 'event updated successfully');
             } else {
+                
+                if ($request->hasFile('images')) {
+                    $imagePaths = [];
+                    foreach ($request->file('images') as $image) {
+                        $filename = time() . rand(1000, 9999) . '.' . $image->getClientOriginalExtension();
+                        $image->move(public_path('events'), $filename);
+                        $imagePaths[] = 'events/' . $filename;
+                    }
+                }
+                $data['images']  = implode(',', $imagePaths);
                 $created = Event::create($data);
-                Log::info("Event created successfully. ID: {$created->id}", $data);
-                return redirect()->route('admin.event.list')->with('success', 'Event created successfully');
+                Log::info("event created successfully. ID: {$created->id}", $data);
+                return redirect()->route('admin.event.list')->with('success', 'event created successfully');
             }
         } catch (\Exception $e) {
-            Log::error("Event store error", [
+            Log::error("event store error", [
                 'error' => $e->getMessage(),
                 'id' => $id
             ]);
@@ -107,16 +136,16 @@ class EventController extends Controller
         $event = Event::find($id);
 
         if (!$event) {
-            Log::warning("Delete failed: Event with ID {$id} not found.");
-            return redirect()->back()->with('error', 'Event not found.');
+            Log::warning("Delete failed: event with ID {$id} not found.");
+            return redirect()->back()->with('error', 'event not found.');
         }
         $originalData = $event->status;
         $event->delete();
 
-        Log::info("Event marked as deleted. ID: {$id}", [
+        Log::info("event marked as deleted. ID: {$id}", [
             'original_status' => $originalData,
         ]);
 
-        return redirect()->back()->with('success', 'Event marked as deleted successfully.');
+        return redirect()->back()->with('success', 'event marked as deleted successfully.');
     }
 }

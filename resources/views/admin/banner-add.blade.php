@@ -7,7 +7,7 @@
     </style>
     <!-- Content -->
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4">Add Banner</h4>
+        <h4 class="fw-bold py-3 mb-4">{{ !empty($banner->id) ? 'Edit' : 'Add' }} Banner</h4>
 
         <div class="row">
             <div class="col-md-12">
@@ -18,20 +18,20 @@
                         <input type="hidden" name="id" value="{{ $banner->id ?? '' }}">
 
                         <div class="card-body">
-
+                        <div class="row">
                             {{-- Image --}}
-                            <div class="mb-3">
+                            <div class="col-md-6 mb-3">
                                 <label for="image" class="form-label">Image</label>
                                 <input type="file" class="form-control" name="image" id="image">
                                 @if (!empty($banner->image))
                                     <div class="mt-2">
-                                        <img src="{{ asset($banner->image) }}" width="150" alt="Image">
+                                        <img src="{{ asset($banner->image) }}" width="60" alt="Image">
                                     </div>
                                 @endif
                             </div>
 
                             {{-- Heading --}}
-                            <div class="mb-3">
+                            <div class="col-md-6 mb-3">
                                 <label for="heading" class="form-label">Heading <span
                                         class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="heading" id="heading"
@@ -40,7 +40,7 @@
                             </div>
 
                             {{-- Short Description --}}
-                            <div class="mb-3">
+                            <div class="col-md-6 mb-3">
                                 <label for="short_desc" class="form-label">Short description <span
                                         class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="short_desc" id="short_desc"
@@ -49,7 +49,7 @@
                             </div>
 
                             {{-- Status --}}
-                            <div class="mb-3 form-check form-switch">
+                            <div class="col-md-12 mb-3 form-check form-switch">
                                 <input type="hidden" name="status" value="0"> {{-- hidden input --}}
                                 <label class="form-check-label" for="status">Status</label>
                                 <input type="checkbox" class="form-check-input" 
@@ -62,7 +62,7 @@
                             <div>
                                 <input type="submit" class="btn btn-primary" value="Submit" />
                             </div>
-
+                        </div>
                         </div>
                     </form>
                 </div>

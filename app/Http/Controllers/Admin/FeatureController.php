@@ -74,7 +74,7 @@ class FeatureController extends Controller
             $query = Feature::query();
             if ($request->has('search') && !empty($request->search)) {
                 $search = $request->search;
-                $query->where('name', 'like', '%' . $search . '%');
+                $query->where('heading', 'like', '%' . $search . '%');
             }
             $featureList = $query->latest()->paginate(10)->withQueryString();
 

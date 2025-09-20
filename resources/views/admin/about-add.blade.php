@@ -7,7 +7,7 @@
     </style>
     <!-- Content -->
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4">Add About</h4>
+        <h4 class="fw-bold py-3 mb-4">{{ !empty($about->id) ? 'Edit' : 'Add' }} About</h4>
 
         <div class="row">
             <div class="col-md-12">
@@ -18,9 +18,9 @@
                         <input type="hidden" name="id" value="{{ $about->id ?? '' }}">
 
                         <div class="card-body">
-
+                        <div class="row">
                             {{-- Title --}}
-                            <div class="mb-3">
+                            <div class="col-md-6 mb-3">
                                 <label for="title" class="form-label">About Title <span
                                         class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="title" id="title"
@@ -29,12 +29,12 @@
                             </div>
 
                             {{-- Image --}}
-                            <div class="mb-3">
+                            <div class="col-md-6 mb-3">
                                 <label for="image" class="form-label">About Image</label>
                                 <input type="file" class="form-control" name="image" id="image">
                                 @if (!empty($about->image))
                                     <div class="mt-2">
-                                        <img src="{{ asset($about->image) }}" width="150" alt="about Image">
+                                        <img src="{{ asset($about->image) }}" width="60" alt="about Image">
                                     </div>
                                 @endif
                             </div>
@@ -63,7 +63,7 @@
                             <div>
                                 <input type="submit" class="btn btn-primary" value="Submit" />
                             </div>
-
+                        </div>
                         </div>
                     </form>
                 </div>

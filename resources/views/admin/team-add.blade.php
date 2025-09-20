@@ -7,7 +7,7 @@
     </style>
     <!-- Content -->
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4">Add Team Member</h4>
+        <h4 class="fw-bold py-3 mb-4">{{ !empty($team->id) ? 'Edit' : 'Add' }} Team Member</h4>
 
         <div class="row">
             <div class="col-md-12">
@@ -18,20 +18,20 @@
                         <input type="hidden" name="id" value="{{ $team->id ?? '' }}">
 
                         <div class="card-body">
-
+                        <div class="row">
                             {{-- Image --}}
-                            <div class="mb-3">
+                            <div class="col-md-6 mb-3">
                                 <label for="image" class="form-label">Image</label>
                                 <input type="file" class="form-control" name="image" id="image">
                                 @if (!empty($team->image))
                                     <div class="mt-2">
-                                        <img src="{{ asset($team->image) }}" width="150" alt="Image">
+                                        <img src="{{ asset($team->image) }}" width="60" alt="Image">
                                     </div>
                                 @endif
                             </div>
 
                             {{-- Name --}}
-                            <div class="mb-3">
+                            <div class="col-md-6 mb-3">
                                 <label for="name" class="form-label">Name <span
                                         class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="name" id="name"
@@ -40,7 +40,7 @@
                             </div>
 
                             {{-- Email --}}
-                            <div class="mb-3">
+                            <div class="col-md-6 mb-3">
                                 <label for="email" class="form-label">Email <span
                                         class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="email" id="email"
@@ -50,7 +50,7 @@
 
 
                             {{-- Position --}}
-                            <div class="mb-3">
+                            <div class="col-md-6 mb-3">
                                 <label for="position" class="form-label">Position <span
                                         class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="position" id="position"
@@ -59,7 +59,7 @@
                             </div>
 
                             {{-- Qualifications --}}
-                            <div class="mb-3">
+                            <div class="col-md-6 mb-3">
                                 <label for="qualifications" class="form-label">Qualifications <span
                                         class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="qualifications" id="qualifications"
@@ -69,7 +69,7 @@
 
                             
                             {{-- Location --}}
-                            <div class="mb-3">
+                            <div class="col-md-6 mb-3">
                                 <label for="location" class="form-label">Location <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="location" id="location"
                                     value="{{ old('location', $team->location ?? '') }}" placeholder="Enter Name"
@@ -77,14 +77,14 @@
                             </div>
 
                             {{-- Description --}}
-                            <div class="mb-3">
+                            <div class="col-md-12 mb-3">
                                 <label for="editor1" class="form-label">Short Description <span class="text-danger">*</span></label>
                                 <textarea name="content" id="editor1" class="form-control" rows="4">{{ old('content', $team->content ?? '') }}</textarea>
                             </div>
 
                          
                             {{-- Status --}}
-                            <div class="mb-3 form-check form-switch">
+                            <div class="col-md-12 mb-3 form-check form-switch">
                                 <input type="hidden" name="status" value="0"> {{-- hidden input --}}
                                 <label class="form-check-label" for="status">Status</label>
                                 <input type="checkbox" class="form-check-input" 
@@ -97,7 +97,7 @@
                             <div>
                                 <input type="submit" class="btn btn-primary" value="Submit" />
                             </div>
-
+                        </div>
                         </div>
                     </form>
                 </div>

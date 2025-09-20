@@ -10,7 +10,7 @@
 
     @endphp
    <div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="fw-bold py-3 mb-4">Add Blog Category</h4>
+    <h4 class="fw-bold py-3 mb-4">{{ !empty($blogCategory->id) ? 'Edit' : 'Add' }} Blog Category</h4>
 
     <div class="row">
         <div class="col-md-12">
@@ -21,7 +21,7 @@
 
                     <div class="card-body">
                         {{-- Category Title --}}
-                        <div class="mb-3">
+                        <div class="col-md-6 mb-3">
                             <label for="name" class="form-label">Category Title <span class="text-danger">*</span></label>
                             <input type="text" class="form-control" name="name" id="name"
                                    value="{{ old('name', $blogCategory->name ?? '') }}" placeholder="Enter category name" />

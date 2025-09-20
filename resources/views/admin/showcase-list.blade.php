@@ -12,7 +12,7 @@
         <form method="GET" action="{{ route('admin.showcase.list') }}" class="mb-3">
             <div class="row">
                 <div class="col-md-4">
-                    <input type="text" name="search" class="form-control" placeholder="Search by Name"
+                    <input type="text" name="search" class="form-control" placeholder="Search by heading"
                         value="{{ request('search') }}">
                 </div>
 

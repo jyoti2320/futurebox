@@ -72,20 +72,20 @@
           </div>
 
           <div class="menu-inner-shadow"></div>
+            @php
+                $currentRoute = Route::currentRouteName();
+            @endphp
 
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
-            <li class="menu-item ">
-              <a href="index" class="menu-link">
+            <li class="menu-item {{ $currentRoute == 'admin.dashboard' ? 'active' : '' }}">
+              <a href="dashboard" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
               </a>
             </li>
 <!-- Blogs (with toggle) -->
-            @php
-                $currentRoute = Route::currentRouteName();
-            @endphp
-
+          
             <li
                 class="menu-item {{ in_array($currentRoute, ['admin.blogCategory.list', 'admin.blog.list']) ? 'active open' : '' }}">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
