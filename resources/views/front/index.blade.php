@@ -87,7 +87,7 @@
 
                           <div class="col-12 col-md-6 align-self-center">
 
-                            <h1 id="bannerText" class="text-white mb-3 text-uppercase fw-bold">
+                            <!-- <h1 id="bannerText" class="text-white mb-3 text-uppercase fw-bold"> -->
 
                               <!-- The
                               <span class="primary-light-clr">Future</span> of
@@ -97,7 +97,7 @@
 							   	{!! $banner->heading !!}
 
 
-                            </h1>
+                            <!-- </h1> -->
 
                             <p class="text-white mb-3 fs-2">{{ $banner->short_desc }}</p>
                             <a href="/contact" class="mybtn1 mt-4">Discover More</a>

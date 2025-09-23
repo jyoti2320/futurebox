@@ -6,7 +6,10 @@ CKEDITOR.editorConfig = function( config ) {
 };
 
 $(document).ready(function () {
-    CKEDITOR.replace('editor');
+    CKEDITOR.replace('editor',{
+        allowedContent: true,
+        extraAllowedContent: '*(*);*{*};*[*]',
+    });
     CKEDITOR.replace('editor1');
     CKEDITOR.replace('editor2', {
         toolbar: [

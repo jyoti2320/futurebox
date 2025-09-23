@@ -20,6 +20,27 @@
         height: 140px;
         object-fit: contain;
     }
+    .thumbImgContainer > div {
+    border: 1px solid #ddd;
+    padding: 4px;
+    position: relative; /* important */
+    display: inline-block;
+    }
+
+    .thumbImgContainer > div .removeImage {
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        background: red;
+        color: #fff;
+        font-size: 14px;
+        font-weight: bold;
+        text-decoration: none;
+        padding: 2px 6px;
+        border-radius: 50%;
+        line-height: 1;
+    }
+
 </style>
     <!-- Content -->
     <div class="container-xxl flex-grow-1 container-p-y">
@@ -80,7 +101,7 @@
                                         @foreach(explode(',', $event->images) as $key => $image)
                                             <div id="image_{{ $key }}">
                                                 <img src="{{ asset($image) }}" class="img-responsive thumb thumbnail" width="100px" height="100px">
-                                                <a href="javascript:void(0);" onclick="removeImage('{{ $key }}', '{{ $image }}')">X</a>
+                                                <a href="javascript:void(0);" class="removeImage" onclick="removeImage('{{ $key }}', '{{ $image }}')">X</a>
                                                 <input type="hidden" name="old_images[]" value="{{ $image }}">
                                             </div>
                                         @endforeach
