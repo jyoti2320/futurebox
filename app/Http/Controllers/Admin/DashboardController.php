@@ -17,7 +17,9 @@ class DashboardController extends Controller
             $blogCount = Blog::where('status', 1)->count() ?? 0;
             $eventCount = Event::where('status', 1)->count() ?? 0;
             $teamCount = Team::where('status', 1)->count() ?? 0;
-            return view('admin.dashboard',compact('blogCount','eventCount','teamCount'));
+            $contactCount = Contact::count() ?? 0;
+            return view('admin.dashboard',compact('blogCount','eventCount','teamCount','contactCount'));
+            
         } catch (Exception $e) {
             Log::error('Dashboard data load failed: ' . $e->getMessage());
 

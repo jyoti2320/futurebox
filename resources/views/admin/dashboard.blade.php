@@ -111,13 +111,13 @@
                       </a>
                     </div>
                     <div class="col-6 mb-4">
-                      <a href="{{ route('admin.setting',1) }}">
+                      <a href="{{ route('admin.contact.list') }}">
                       <div class="card">
                         <div class="card-body">
                           <div class="row">
                             <div class="col-6">
-                              <span class="fw-semibold d-block mb-1">Setting</span>
-                              <!-- <h3 class="card-title mb-2"></h3> -->
+                              <span class="fw-semibold d-block mb-1">Contact</span>
+                               <h3 class="card-title mb-2">{{$contactCount}}</h3> 
                             </div>
                             <div class="col-6">
                               <div class="card-title d-flex align-items-start justify-content-end">
