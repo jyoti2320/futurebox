@@ -190,6 +190,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('headerbanner-store/{id?}', [HeaderBannerController::class, 'storeHeaderBanner'])->name('headerbanner.store');
         Route::post('headerbanner-delete/{id}', [HeaderBannerController::class, 'deleteHeaderBanner'])->name('headerbanner.delete');
 
+        // contact
+        Route::get('contact-list', [DashboardController::class, 'contactList'])->name('contact.list');
+
 
         Route::get('logout', [AdminController::class, 'logout'])->name('logout');
 

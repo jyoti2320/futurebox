@@ -89,7 +89,7 @@
             <li
                 class="menu-item {{ in_array($currentRoute, ['admin.blogCategory.list', 'admin.blog.list']) ? 'active open' : '' }}">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
-                    <i class="menu-icon tf-icons bx bx-news"></i>
+                    <i class="menu-icon tf-icons bx bx-notepad"></i>
                     <div data-i18n="Layouts">Blogs</div>
                 </a>
                 <ul class="menu-sub">
@@ -130,7 +130,7 @@
             <li
                 class="menu-item {{ $currentRoute  == 'admin.service.list' || $currentRoute == 'admin.service.add' ? 'active' : '' }}">
                 <a href="{{ route('admin.service.list') }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-news"></i>
+                    <i class="menu-icon tf-icons bx bx-box"></i>
                     <div data-i18n="What we offer">What we offer</div>
                 </a>
             </li>
@@ -138,7 +138,7 @@
             <li
                 class="menu-item {{ $currentRoute  == 'admin.event.list' || $currentRoute == 'admin.event.add' ? 'active' : '' }}">
                 <a href="{{ route('admin.event.list') }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-news"></i>
+                    <i class="menu-icon tf-icons bx bx-collection"></i>
                     <div data-i18n="Events">Events</div>
                 </a>
             </li>
@@ -154,7 +154,7 @@
             <li
                 class="menu-item {{ $currentRoute  == 'admin.team.list' || $currentRoute == 'admin.team.add' ? 'active' : '' }}">
                 <a href="{{ route('admin.team.list') }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-news"></i>
+                    <i class="menu-icon tf-icons bx bx-user"></i>
                     <div data-i18n="Team">Team</div>
                 </a>
             </li>
@@ -162,7 +162,7 @@
             <li
                 class="menu-item {{ $currentRoute  == 'admin.banner.list' || $currentRoute == 'admin.banner.add' ? 'active' : '' }}">
                 <a href="{{ route('admin.banner.list') }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-news"></i>
+                    <i class="menu-icon tf-icons bx bx-images"></i>
                     <div data-i18n="Banner">Banner</div>
                 </a>
             </li>
@@ -170,7 +170,7 @@
             <li
                 class="menu-item {{ $currentRoute  == 'admin.headerbanner.list' || $currentRoute == 'admin.headerbanner.add' ? 'active' : '' }}">
                 <a href="{{ route('admin.headerbanner.list') }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-news"></i>
+                    <i class="menu-icon tf-icons bx bx-copy"></i>
                     <div data-i18n="Header Banner">Header Banner</div>
                 </a>
             </li>
@@ -178,15 +178,23 @@
             <li
                 class="menu-item {{ $currentRoute  == 'admin.showcase.list' || $currentRoute == 'admin.showcase.add' ? 'active' : '' }}">
                 <a href="{{ route('admin.showcase.list') }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-news"></i>
+                    <i class="menu-icon tf-icons bx bx-calendar-check"></i>
                     <div data-i18n="Showcase">Showcase</div>
+                </a>
+            </li>
+
+            <li
+                class="menu-item {{ $currentRoute  == 'admin.contact.list' ? 'active' : '' }}">
+                <a href="{{ route('admin.contact.list') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-user-check"></i>
+                    <div data-i18n="Contact">Contact</div>
                 </a>
             </li>
 
             <li
                 class="menu-item {{ $currentRoute  == 'admin.setting' ? 'active' : '' }}">
                 <a href="{{ route('admin.setting',1) }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-news"></i>
+                    <i class="menu-icon tf-icons bx bx-cog"></i>
                     <div data-i18n="Setting">Setting</div>
                 </a>
             </li>
