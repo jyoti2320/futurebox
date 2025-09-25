@@ -40,9 +40,7 @@
                             <div class="col-md-12 mb-3">
                                 <label for="editor1" class="form-label">Short description <span
                                         class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="short_desc" id="editor1"
-                                    value="{{ old('short_desc', $feature->short_desc ?? '') }}" placeholder="Enter Short description"
-                                     />
+                                <textarea name="short_desc" id="editor1" class="form-control" rows="4">{{ old('short_desc', $feature->short_desc ?? '') }}</textarea>
                             </div>
 
                          

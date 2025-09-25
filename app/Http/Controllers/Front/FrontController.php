@@ -11,6 +11,8 @@ use App\Models\Event;
 use App\Models\Team;
 use App\Models\Blog;
 use App\Models\Feature;
+use App\Models\Headerbanner;
+
 
 use Illuminate\Http\Request;
 
@@ -47,8 +49,9 @@ class FrontController extends Controller
         try {
             $team = Team::limit(3)->where('status' , 1)->get();
             $features = Feature::where('status' , 1)->get();
+            $headerbanner = Headerbanner::where('page_name', 'about')->first();
             $about = About::first();
-            return view('front.about', compact('team','features','about'));
+            return view('front.about', compact('team','features','headerbanner','about'));
 
         } catch (Exception $e) {
             Log::error('Failed to load About Us page: ' . $e->getMessage());

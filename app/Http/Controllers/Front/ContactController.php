@@ -10,14 +10,15 @@ use Exception;
 use Illuminate\Support\Facades\Log;
 use App\Mail\ContactMail;
 use Illuminate\Support\Facades\Mail;
-
+use App\Models\Headerbanner;
 
 class ContactController extends Controller
 {
     public function contact(){
         try {
             $setting = Setting::first();
-            return view('front.contact', compact('setting'));
+            $headerbanner = Headerbanner::where('page_name', 'Contact')->first();
+            return view('front.contact', compact('setting','headerbanner'));
 
         } catch (Exception $e) {
             Log::error('Failed to load Contact Us page: ' . $e->getMessage());

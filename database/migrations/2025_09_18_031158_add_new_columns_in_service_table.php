@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('service', function (Blueprint $table) {
-            $table->string('year', 255)->nullable();
-            $table->longtext('images', 255)->nullable();
-        });
+        // Schema::table('service', function (Blueprint $table) {
+        //     $table->string('year', 255)->nullable();
+        //     $table->longtext('images', 255)->nullable();
+        // });
     }
 
     /**

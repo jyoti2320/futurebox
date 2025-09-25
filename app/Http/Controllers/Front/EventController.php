@@ -7,7 +7,7 @@ use App\Models\Event;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-
+use App\Models\Headerbanner;
 
 class EventController extends Controller
 {
@@ -18,7 +18,8 @@ class EventController extends Controller
                 ->select('name')
                 ->groupBy('name')
                 ->get();
-            return view('front.events', compact('events'));
+            $headerbanner = Headerbanner::where('page_name', 'Event')->first();
+            return view('front.events', compact('events','headerbanner'));
         } catch (Exception $e) {
             Log::error('Failed to load events: ' . $e->getMessage());
             return redirect()->back()->with('error', 'Something went wrong while loading the events.');

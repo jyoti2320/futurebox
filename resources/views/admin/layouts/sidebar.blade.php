@@ -79,7 +79,7 @@
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
             <li class="menu-item {{ $currentRoute == 'admin.dashboard' ? 'active' : '' }}">
-              <a href="dashboard" class="menu-link">
+              <a href="{{route('admin.dashboard')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
               </a>
@@ -164,6 +164,14 @@
                 <a href="{{ route('admin.banner.list') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-news"></i>
                     <div data-i18n="Banner">Banner</div>
+                </a>
+            </li>
+
+            <li
+                class="menu-item {{ $currentRoute  == 'admin.headerbanner.list' || $currentRoute == 'admin.headerbanner.add' ? 'active' : '' }}">
+                <a href="{{ route('admin.headerbanner.list') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-news"></i>
+                    <div data-i18n="Header Banner">Header Banner</div>
                 </a>
             </li>
 

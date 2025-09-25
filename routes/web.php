@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\ShowcaseController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\FeatureController;
 use App\Http\Controllers\Admin\EventgallaryController;
+use App\Http\Controllers\Admin\HeaderBannerController;
 
 use App\Http\Controllers\Front\FrontController;
 use App\Http\Controllers\Front\EventController as FrontEventController;
@@ -181,6 +182,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('eventgallary-store/{id?}', [EventgallaryController::class, 'storeEventgallary'])->name('eventgallary.store');
         Route::post('eventgallary-update/{id?}', [EventgallaryController::class, 'updateEventgallary'])->name('eventgallary.update');
         Route::post('eventgallary-delete/{id}', [EventgallaryController::class, 'deleteEventgallary'])->name('eventgallary.delete');
+
+        // header banner
+        Route::get('headerbanner-add/{id?}', [HeaderBannerController::class, 'addHeaderBanner'])->name('headerbanner.add');
+        Route::get('headerbanner-list', [HeaderBannerController::class, 'headerbannerList'])->name('headerbanner.list');
+        Route::post('headerbanner-store/{id?}', [HeaderBannerController::class, 'storeHeaderBanner'])->name('headerbanner.store');
+        Route::post('headerbanner-delete/{id}', [HeaderBannerController::class, 'deleteHeaderBanner'])->name('headerbanner.delete');
+
 
         Route::get('logout', [AdminController::class, 'logout'])->name('logout');
 

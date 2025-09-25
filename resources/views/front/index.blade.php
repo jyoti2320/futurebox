@@ -262,7 +262,7 @@
 				<div class="swiper-wrapper">
 					@foreach ($event as $item2)
 					<div class="swiper-slide">
-						<img src="{{$item2->image}}" alt="img" />
+						<a href="{{route('event')}}"><img src="{{$item2->image}}" alt="{{$item2->image}}" />
 						<div class="slide-content">
 							<h4>{{$item2->name}}</h4>
 							<div class="d-flex gap-3 justify-content-between">
@@ -274,7 +274,7 @@
 							</div>
 
 						</div>
-
+						</a>
 					</div>
 
 					@endforeach
