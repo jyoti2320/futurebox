@@ -96,6 +96,7 @@ function deleteDirectory($dir)
 
 Route::get('/', [FrontController::class, 'index'])->name('index');
 Route::get('/about', [FrontController::class, 'about'])->name('about');
+Route::get('/privacy', [FrontController::class, 'privacy'])->name('privacy');
 
 Route::get('/event', [FrontEventController::class, 'event'])->name('event');
 Route::get('/event/load-images', [FrontEventController::class, 'loadImages'])->name('event.load');

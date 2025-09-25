@@ -30,12 +30,16 @@ class ContactController extends Controller
         $request->validate([
             'fullname' => 'required|string|max:255',
             'email' => 'required|string|email',
+            'furnishing' => 'required|string',
+            'reason' => 'required|string',
             'message' => 'required|string',
         ]);
 
         $data = [
             'fullname' => $request->fullname,
             'email' => $request->email,
+            'furnishing' => $request->furnishing,
+            'reason' => $request->reason,
             'message' => $request->message,
         ];
         // dd($data);

@@ -59,4 +59,14 @@ class FrontController extends Controller
         }
     }
 
+    public function privacy(){
+        try {
+            return view('front.privacy');
+
+        } catch (Exception $e) {
+            Log::error('Failed to load privacy page: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Something went wrong while loading the privacy page.');
+        }
+    }
+
 }

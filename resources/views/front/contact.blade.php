@@ -25,7 +25,9 @@
                 <div class="contactFormBox">
                     @include('front.layout.notifications')
                     <h2 class="fs-2 fw-bold mb-4 text-light text-uppercase wow animate__fadeInDown">Get in touch today!</h2>
-                    <p class="mb-4 wow animate__fadeInUp">Fill out the form below to connect with our team. We’re committed to providing you with the support and guidance you need.</p>
+                    <!-- <p class="mb-4 wow animate__fadeInUp">Fill out the form below to connect with our team. We’re committed to providing you with the support and guidance you need.</p> -->
+                    <p class="mb-4 wow animate__fadeInUp">Do you have questions about our projects, want to collabrate, or would like to invite us to an event?</p>
+                    <p class="mb-4 wow animate__fadeInUp">Send us an email to at {{$setting->email}} or simply use the contact form. we prefer to handle all inquiries for Collabrations, events, or other requests through our contact form.</p>
                     <form action="{{ route('contact-form') }}" method="post" class="needs-validation" novalidate>
                         @csrf
                         <div class="mb-3 wow animate__fadeInUp" data-wow-delay="0.3s">
@@ -42,11 +44,34 @@
                                 Please enter a valid Email.
                             </div>
                         </div>
+                        <div class="mb-3 wow animate__fadeInUp" data-wow-delay="0.4s">
+                            <label class="form-label">Furnishings</label>
+                            <input type="text" class="form-control" name="furnishing" id="furnishing" placeholder="Enter Furnishings" required>
+                            <div class="invalid-feedback" id="furnishingError">
+                                Please enter data.
+                            </div>
+                        </div>
+                        <div class="mb-3 wow animate__fadeInUp" data-wow-delay="0.4s">
+                            <label class="form-label">Reason for inquiry</label>
+                            <!-- <input type="email" class="form-control" name="email" id="email" placeholder="Enter Your Email" required> -->
+                            <select name="reason" id="reason" class="form-select" required>
+                                <option value="">Select</option>
+                                <option value="General Inquiries">General Inquiries</option>
+                                <option value="Collabration & Partnerships">Collabration & Partnerships</option>
+                                <option value="Events & pricing information">Events & pricing information</option>
+                                <option value="Press & Media">Press & Media</option>
+                                <option value="Other Requests">Other Requests</option>
+
+                            </select>
+                            <div class="invalid-feedback" id="reasonError">
+                                Please enter Reason.
+                            </div>
+                        </div>
                         <div class="mb-3 wow animate__fadeInUp" data-wow-delay="0.5s">
-                            <label class="form-label">Message</label>
-                            <textarea class="form-control" rows="4" name="message" id="message" placeholder="Enter Your Message" required></textarea>
+                            <label class="form-label">News</label>
+                            <textarea class="form-control" rows="4" name="message" id="message" placeholder="News" required></textarea>
                              <div class="invalid-feedback" id="messageError">
-                                Please enter a Message.
+                                Please enter a News.
                             </div>
                         </div>
                         <div class="form-check mb-3 wow animate__fadeInUp" data-wow-delay="0.6s">
