@@ -65,7 +65,10 @@
 										<a class="nav-link {{ Route::is('blog') ? 'active' : '' }}" href="/blog">Blogs</a>
 									</li>
 									<li class="nav-item">
-											<a class="nav-link {{ Route::is('contact') ? 'active' : '' }}" href="/contact">Contact</a>
+										<a class="nav-link {{ Route::is('contact') ? 'active' : '' }}" href="/contact">Contact</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link {{ Route::is('privacy') ? 'active' : '' }}" href="/privacy">Privacy</a>
 									</li>		
 								</ul>
 								<div class="menuRight">

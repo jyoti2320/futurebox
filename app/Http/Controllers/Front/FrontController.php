@@ -61,7 +61,8 @@ class FrontController extends Controller
 
     public function privacy(){
         try {
-            return view('front.privacy');
+            $headerbanner = Headerbanner::where('page_name', 'privacy')->first();
+            return view('front.privacy',compact('headerbanner'));
 
         } catch (Exception $e) {
             Log::error('Failed to load privacy page: ' . $e->getMessage());

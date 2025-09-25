@@ -1,7 +1,7 @@
 @extends('front.layout.main')
 @section('main-section')
 <!-- Breadcrumb Area Start -->
-<section class="breadcrumb-area about" >
+<section class="breadcrumb-area about" style="background: url({{ $headerbanner->image }});">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
