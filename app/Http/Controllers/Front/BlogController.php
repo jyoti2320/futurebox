@@ -13,8 +13,9 @@ class BlogController extends Controller
     public function blog(){
         try {
                 $blogs = Blog::with('category')
-                ->limit(3)
+                // ->limit(3)
                 ->where('status', 1)
+                ->orderBy('sequence', 'asc')
                 ->get();
                 $headerbanner = Headerbanner::where('page_name', 'Blogs')->first();
             return view('front.blogs', compact('blogs','headerbanner'));

@@ -70,10 +70,17 @@
                             </div>
 
                             {{-- Publish Date --}}
-                            <div class="col-md-12 mb-3">
+                            <div class="col-md-6 mb-3">
                                 <label for="publish_date" class="form-label">Publish Date</label>
                                 <input type="date" class="form-control" name="publish_date" id="publish_date"
                                     value="{{ old('publish_date', $blog->publish_date ?? '') }}">
+                            </div>
+
+                            {{-- Sequence --}}
+                            <div class="col-md-6 mb-3">
+                                <label for="sequence" class="form-label">Sequence</label>
+                                <input type="number" class="form-control" name="sequence" id="sequence"
+                                    value="{{ old('sequence', $blog->sequence ?? '') }}">
                             </div>
 
                             <hr>

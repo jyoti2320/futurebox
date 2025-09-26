@@ -32,10 +32,11 @@
                     <thead>
                         <tr>
                             <th>ID.</th>
-                            <th>Blog Title</th>
-                            <th>Description</th>
+                            <!-- <th>Description</th> -->
                             <th>Image</th>
-                            <th>Slug</th>
+                            <th>Blog Title</th>
+                            <th>Sequence</th>
+                            <!-- <th>Slug</th> -->
                             <th>Date</th>
                             <th>Status</th>
                             <th>Action</th>
@@ -45,8 +46,7 @@
                         @foreach ($blogList as $blog)
                             <tr>
                                 <td>{{ $blog->id }}</td>
-                                <td>{{ $blog->title }}</td>
-                                <td>
+                                <!-- <td>
                                     @php
                                         $cleanContent = strip_tags(html_entity_decode($blog->content));
                                     @endphp
@@ -57,7 +57,6 @@
                                         <a href="#" data-bs-toggle="modal"
                                             data-bs-target="#blogModal{{ $blog->id }}">Read more</a>
 
-                                        <!-- Modal -->
                                         <div class="modal fade" id="blogModal{{ $blog->id }}" tabindex="-1"
                                             aria-labelledby="blogModalLabel{{ $blog->id }}" aria-hidden="true">
                                             <div class="modal-dialog modal-lg">
@@ -77,10 +76,12 @@
                                             </div>
                                         </div>
                                     @endif
-                                </td>
+                                </td> -->
                                 <td> <img src="{{ asset($blog->image) }}" alt="Blog Image" width="60" height="60">
                                 </td>
-                                <td>{{ $blog->slug }}</td>
+                                <td><p style="width: 230px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ $blog->title }}</p></td>
+                                <td>{{ $blog->sequence }}</td>
+                                <!-- <td>{{ $blog->slug }}</td> -->
                                 <td>{{ date('d-m-Y', strtotime($blog->publish_date)) }}</td>
                                 <td>
                                     @if ($blog->status == 1)

@@ -29,6 +29,7 @@ class FrontController extends Controller
             $blogs = Blog::with('category')
                 ->limit(3)
                 ->where('status', 1)
+                ->orderBy('sequence', 'asc')
                 ->get();
             // dd($blogs);
             return view('front.index', compact(

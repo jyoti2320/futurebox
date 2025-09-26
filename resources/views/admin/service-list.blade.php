@@ -34,7 +34,7 @@
                             <th>ID.</th>
                             <th>Name</th>
                             <th>Image</th>
-                            <th>Short description</th>
+                            <!-- <th>Short description</th> -->
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -45,7 +45,7 @@
                                 <td>{{ $services->name }}</td>
                                 <td> <img src="{{ asset($services->image) }}" alt="{{ $services->name }}" width="60" height="60">
                                 </td>
-                                <td>{{ $services->short_desc }}</td>
+                                <!-- <td>{{ $services->short_desc }}</td> -->
                                 <td>
                                     {{-- Edit --}}
                                     <a class="btn btn-sm btn-icon btn-warning"

@@ -35,8 +35,8 @@
                             <th>Image</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Position</th>
-                            <th>Location</th>
+                            <!-- <th>Position</th>
+                            <th>Location</th> -->
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -48,8 +48,8 @@
                                 </td>
                                 <td>{{ $teams->name }}</td>
                                 <td>{{ $teams->email }}</td>
-                                <td>{{ $teams->position }}</td>
-                                <td>{{ $teams->location }}</td>
+                                <!-- <td>{{ $teams->position }}</td>
+                                <td>{{ $teams->location }}</td> -->
                                 <td>
                                     {{-- Edit --}}
                                     <a class="btn btn-sm btn-icon btn-warning"

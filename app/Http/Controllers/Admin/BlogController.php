@@ -47,6 +47,7 @@ class BlogController extends Controller
             'content' => $request->content,
             'blog_category_id' => $request->blog_category_id,
             'publish_date' => $request->publish_date,
+            'sequence' => $request->sequence,
             'meta_keywords' => $request->meta_keywords,
             'meta_title' => $request->meta_title,
             'meta_description' => $request->meta_description,
