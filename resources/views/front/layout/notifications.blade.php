@@ -1,8 +1,24 @@
 {{-- resources/views/partials/notifications.blade.php --}}
 
-@if (session('success'))
+<!-- @if (session('success'))
     <div class="alert alert-success alert-dismissible fade show" role="alert" id="success-message">
         {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif -->
+
+@if(session('contact_success'))
+    <!-- <div class="alert alert-success">{{ session('contact_success') }}</div> -->
+    <div class="alert alert-success alert-dismissible fade show" role="alert" id="success-message">
+        {{ session('contact_success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
+@if(session('newsletter_success'))
+    <!-- <div class="alert alert-success">{{ session('newsletter_success') }}</div> -->
+    <div class="alert alert-success alert-dismissible fade show" role="alert" id="success-message">
+        {{ session('newsletter_success') }}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 @endif

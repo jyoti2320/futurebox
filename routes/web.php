@@ -17,6 +17,7 @@ use App\Http\Controllers\Front\FrontController;
 use App\Http\Controllers\Front\EventController as FrontEventController;
 use App\Http\Controllers\Front\ContactController as FrontContactController;
 use App\Http\Controllers\Front\BlogController as FrontBlogController;
+use App\Http\Controllers\Front\NewsletterController;
 
 use App\Http\Controllers\AdminController;
 use App\Http\Middleware\AdminCheckMiddleware;
@@ -107,6 +108,7 @@ Route::post('/contact-form', [FrontContactController::class, 'contactForm'])->na
 Route::get('/blog', [FrontBlogController::class, 'blog'])->name('blog');
 Route::get('/blog-details/{slug}', [FrontBlogController::class, 'blogDetails'])->name('blog-detail');
 
+Route::post('/newsletter', [NewsletterController::class, 'subscribe'])->name('newsletter');
 
 
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -192,6 +194,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // contact
         Route::get('contact-list', [DashboardController::class, 'contactList'])->name('contact.list');
+        Route::get('newsletter-list', [DashboardController::class, 'newsletterList'])->name('newsletter.list');
+
 
 
         Route::get('logout', [AdminController::class, 'logout'])->name('logout');

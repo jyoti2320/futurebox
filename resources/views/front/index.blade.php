@@ -100,7 +100,7 @@
                             <!-- </h1> -->
 
                             <p class="text-white mb-3 fs-2">{{ $banner->short_desc }}</p>
-                            <a href="/contact" class="mybtn1 mt-4">Discover More</a>
+                            <a href="{{ $banner->btn_url }}" class="mybtn1 mt-4">Discover More</a>
 
                           </div>
 
