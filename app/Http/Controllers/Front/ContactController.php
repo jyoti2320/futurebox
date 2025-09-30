@@ -47,7 +47,8 @@ class ContactController extends Controller
             $created = Contact::create($data);
             Mail::to('jahirwar1920@gmail.com')->send(new ContactMail($data));
             Log::info("Your data add successfully. ID: {$created->id}", $data);
-            return redirect()->route('contact')->with('success', 'Data saved and email sent to admin');
+            // return redirect()->route('contact')->with('success', 'Data saved and email sent to admin');
+            return back()->with('contact_success', 'Data saved and email sent to admin!');
             
         } catch (Exception $e) {
             Log::error("Contact data store error", [

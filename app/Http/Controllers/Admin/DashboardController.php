@@ -8,6 +8,7 @@ use App\Models\Blog;
 use App\Models\Event;
 use App\Models\Team;
 use App\Models\Contact;
+use App\Models\Newsletter;
 use Illuminate\Support\Facades\Log;
 
 class DashboardController extends Controller
@@ -45,6 +46,23 @@ class DashboardController extends Controller
         } catch (\Exception $e) {
             Log::channel('custom_error')->error('Failed to load contact list: ' . $e->getMessage());
             return redirect()->back()->with('error', 'Something went wrong while loading contacts.');
+        }
+    }
+
+    public function newsletterList(Request $request)
+    {
+        try {
+            $query = Newsletter::query();
+            if ($request->has('search') && !empty($request->search)) {
+                $search = $request->search;
+                $query->where('email', 'like', '%' . $search . '%');
+            }
+            $newsletterList = $query->latest()->paginate(10)->withQueryString();
+
+            return view('admin.newsletter-list', compact('newsletterList'));
+        } catch (\Exception $e) {
+            Log::channel('custom_error')->error('Failed to load newsletter list: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Something went wrong while loading newsletters.');
         }
     }
 }

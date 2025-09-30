@@ -192,6 +192,14 @@
             </li>
 
             <li
+                class="menu-item {{ $currentRoute  == 'admin.newsletter.list' ? 'active' : '' }}">
+                <a href="{{ route('admin.newsletter.list') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-user-check"></i>
+                    <div data-i18n="Newsletter">Newsletter</div>
+                </a>
+            </li>
+
+            <li
                 class="menu-item {{ $currentRoute  == 'admin.setting' ? 'active' : '' }}">
                 <a href="{{ route('admin.setting',1) }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-cog"></i>

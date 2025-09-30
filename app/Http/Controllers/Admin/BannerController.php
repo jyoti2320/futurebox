@@ -33,11 +33,13 @@ class BannerController extends Controller
             'heading' => 'required|string|max:255',
             'short_desc' => 'required|string',
             'image' => $id ? 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048' : 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'btn_url' => 'required|string',
         ]);
 
         $data = [
             'heading' => $request->heading,
             'short_desc' => $request->short_desc,
+            'btn_url' => $request->btn_url,
             'status' => $request->status,
         ];
 

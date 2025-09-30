@@ -1,5 +1,34 @@
 @extends('front.layout.main')
 @section('main-section')
+
+<style>
+    form.newsletter-form input {
+        padding: 10px 35px;
+        border-radius: 50px;
+        margin-top: 20px;
+    }
+
+    button.btn.nl-btn {
+        background: #a830ee;
+        border-radius: 50px;
+        font-size: 14px;
+        padding: 8px 25px;
+        color: #fff;
+        text-transform: uppercase;
+        position: absolute;
+        top: 7%;
+        right: 0.5%;
+        height: 84%;
+    } 
+
+    .fs-14{
+        font-size: 14px
+    }
+
+    form.newsletter-form input[type=""]{}
+               
+  
+</style>
 <!-- Breadcrumb Area Start -->
 <section class="breadcrumb-area about" style="background: url({{ $headerbanner->image }});">
 	<div class="container">
@@ -127,6 +156,41 @@
 
                 </div>
             </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="newletter-section" id="newsletter" style="background: #400861; padding-block: 60px">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 text-center">
+                @include('front.layout.notifications')
+                <div class="newsletter-det">
+                    <h2 class="fw-bold">Subscribe to our Newsletter</h2>
+                    <p>Want to stay up to date and learn more about what’s new at Futurebox Systems? Subscribe to our newsletter and receive regular updates on our progress, exciting new projects, and insights into the world of immersive board games and VR experiences.</p>
+                </div>
+
+                <form class="newsletter-form" action="{{ route('newsletter') }}" method="POST">
+                    @csrf
+                    <div class="row justify-content-center">
+                        <div class="col-md-10 justify-content-center">
+                            <div class="position-relative">
+                            <input type="email" name="email" class="w-100 form-control" placeholder="Enter your Email Address">
+                            <button type="submit" class="btn nl-btn">Subscribe</button>
+                        </div> 
+                            <div class="d-flex">
+                                <input type="checkbox" class="form-check-input  mt-4 me-3 p-0" name="agreecheck" id="agreecheck" required>
+                                <label for="agreecheck"><p class="mt-3 fs-14 text-start">Yes, I would like to receive the newsletter with updates and information from Futurebox Systems. Information on revoking your consent and how your data is processed can be found in our <a href="/privacy" class="underline">privacy policy</a>. You can unsubscribe at any time by clicking the link in the footer of our emails.</p></label>
+                            </div>                        
+                        </div>
+                    </div>                    
+                </form> 
+            </div>
+        </div>
+       
+        <div class="col-md-6"> 
+            
         </div>
     </div>
 </section>

@@ -40,9 +40,17 @@
                                 @endif
                             </div>
 
+                            {{-- button link --}}
+                            <div class="col-md-6 mb-3">
+                                <label for="btn_url" class="form-label">Button Url <span
+                                        class="text-danger">*</span></label>
+                                <input type="url" class="form-control" name="btn_url" id="btn_url"
+                                    value="{{ old('btn_url', $banner->btn_url ?? '') }}" placeholder="Enter Url"
+                                     />
+                            </div>
 
                             {{-- Short Description --}}
-                            <div class="col-md-6 mb-3">
+                            <div class="col-md-12 mb-3">
                                 <label for="short_desc" class="form-label">Short description <span
                                         class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="short_desc" id="short_desc"
