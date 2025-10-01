@@ -12,6 +12,8 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\FeatureController;
 use App\Http\Controllers\Admin\EventgallaryController;
 use App\Http\Controllers\Admin\HeaderBannerController;
+use App\Http\Controllers\Admin\PrivacyController;
+
 
 use App\Http\Controllers\Front\FrontController;
 use App\Http\Controllers\Front\EventController as FrontEventController;
@@ -196,7 +198,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('contact-list', [DashboardController::class, 'contactList'])->name('contact.list');
         Route::get('newsletter-list', [DashboardController::class, 'newsletterList'])->name('newsletter.list');
 
-
+        //Privacy
+        Route::get('privacy/{id?}', [PrivacyController::class, 'addPrivacy'])->name('privacy');
+        Route::post('privacy-store/{id?}', [PrivacyController::class, 'storePrivacy'])->name('privacy.store');
 
         Route::get('logout', [AdminController::class, 'logout'])->name('logout');
 

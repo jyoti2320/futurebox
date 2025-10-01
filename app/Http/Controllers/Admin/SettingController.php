@@ -87,7 +87,7 @@ class SettingController extends Controller
 
                 $setting->update($data);
                 Log::info("setting updated successfully. ID: {$id}", $data);
-                return redirect()->route('admin.setting,1')->with('success', 'setting updated successfully');
+                return redirect()->route('admin.setting',1)->with('success', 'setting updated successfully');
             
         } catch (\Exception $e) {
             Log::error("setting update error", [

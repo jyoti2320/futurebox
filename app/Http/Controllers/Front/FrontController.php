@@ -12,7 +12,7 @@ use App\Models\Team;
 use App\Models\Blog;
 use App\Models\Feature;
 use App\Models\Headerbanner;
-
+use App\Models\Privacy;
 
 use Illuminate\Http\Request;
 
@@ -24,7 +24,7 @@ class FrontController extends Controller
             $about = About::first();
             $showcase = Showcase::where('status' , 1)->get();
             $event = Event::where('status' , 1)->get();
-            $service = Service::where('status' , 1)->get();
+            $service = Service::limit(3)->where('status' , 1)->get();
             $team = Team::limit(3)->where('status' , 1)->get();
             $blogs = Blog::with('category')
                 ->limit(3)
@@ -48,7 +48,7 @@ class FrontController extends Controller
     }
     public function about(){
         try {
-            $team = Team::limit(3)->where('status' , 1)->get();
+            $team = Team::where('status' , 1)->get();
             $features = Feature::where('status' , 1)->get();
             $headerbanner = Headerbanner::where('page_name', 'about')->first();
             $about = About::first();
@@ -63,7 +63,8 @@ class FrontController extends Controller
     public function privacy(){
         try {
             $headerbanner = Headerbanner::where('page_name', 'privacy')->first();
-            return view('front.privacy',compact('headerbanner'));
+            $privacy = Privacy::first();
+            return view('front.privacy',compact('headerbanner','privacy'));
 
         } catch (Exception $e) {
             Log::error('Failed to load privacy page: ' . $e->getMessage());

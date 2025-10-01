@@ -30,7 +30,7 @@
 				<div class="left-content">
 					<div class="section-heading">
 						<h5 class="subtitle">Data protection at a glance</h5>
-						<h2 class="title">General information</h2>
+						<!-- <h2 class="title">General information</h2>
                             The following information provides a simple overview of what happens to your personal data when
                              you visit this website. Personal data is all data that can be used to identify you personally.
                               Detailed information on data protection can be found in our privacy policy listed below this text.
@@ -45,8 +45,8 @@
                         What rights do you have regarding your data?<br>
                         You have the right to obtain information about the origin, recipient, and purpose of your stored personal data free of charge at any time. You also have the right to request the correction or deletion of this data. If you have given your consent 
                         to data processing, you can revoke this consent at any time with effect for the future. You also have the right, under certain circumstances, to request the restriction of the processing of your personal data. Furthermore, you have the right to lodge a complaint with the competent supervisory authority.<br>
-                        You can contact us at any time with any questions about this or other issues relating to data protection.<br>
-
+                        You can contact us at any time with any questions about this or other issues relating to data protection.<br> -->
+						{!!$privacy->privacy!!}
 
 					</div>
 				</div>

@@ -200,6 +200,14 @@
             </li>
 
             <li
+                class="menu-item {{ $currentRoute  == 'admin.privacy' ? 'active' : '' }}">
+                <a href="{{ route('admin.privacy',1) }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-cog"></i>
+                    <div data-i18n="Privacy">Privacy</div>
+                </a>
+            </li>
+
+            <li
                 class="menu-item {{ $currentRoute  == 'admin.setting' ? 'active' : '' }}">
                 <a href="{{ route('admin.setting',1) }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-cog"></i>
