@@ -54,7 +54,8 @@ class ContactController extends Controller
             Log::error("Contact data store error", [
                 'error' => $e->getMessage(),
             ]);
-            return redirect()->back()->with('error', 'Something went wrong. Please try again..');
+            return redirect()->back()->with('contact_error', 'Something went wrong. Please try again..');
+
         }
     }
 

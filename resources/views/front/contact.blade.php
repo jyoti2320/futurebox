@@ -51,8 +51,20 @@
     <div class="container position-relative z-99">
         <div class="row justify-content-between align-items-center">
             <div class="col-md-6 mb-4 wow animate__fadeInUp" data-wow-delay="0.2s">
-                <div class="contactFormBox">
-                    @include('front.layout.notifications')
+                <div class="contactFormBox" id="contact">
+                    @if(session('contact_success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('contact_success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    @endif
+
+                    @if(session('contact_error'))
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{ session('contact_error') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    @endif
                     <h2 class="fs-2 fw-bold mb-4 text-light text-uppercase wow animate__fadeInDown">Get in touch today!</h2>
                     <!-- <p class="mb-4 wow animate__fadeInUp">Fill out the form below to connect with our team. We’re committed to providing you with the support and guidance you need.</p> -->
                     <p class="mb-4 wow animate__fadeInUp">Do you have questions about our projects, want to collabrate, or would like to invite us to an event?</p>
@@ -165,7 +177,19 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10 text-center">
-                @include('front.layout.notifications')
+                @if(session('newsletter_success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('newsletter_success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                @endif
+
+                @if(session('newsletter_error'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ session('newsletter_error') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                @endif
                 <div class="newsletter-det">
                     <h2 class="fw-bold">Subscribe to our Newsletter</h2>
                     <p>Want to stay up to date and learn more about what’s new at Futurebox Systems? Subscribe to our newsletter and receive regular updates on our progress, exciting new projects, and insights into the world of immersive board games and VR experiences.</p>
